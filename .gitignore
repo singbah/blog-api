@@ -1,0 +1,4 @@
+.blog
+*.env
+static
+__pycache__
