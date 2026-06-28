@@ -4,13 +4,11 @@ from src.database import Base, engine
 from sqlalchemy.orm import Session as session
 from dotenv import load_dotenv
 import os
-from fastapi.responses import FileResponse
 
-
-from src.models import Setting, Inquiries, Posts, Leads, Tags
+from src.models import Posts
 from src.database import get_db
 from src.routers import all_blue_prints
-import config
+
 
 load_dotenv()
 origin = os.getenv('ORIGINS')
@@ -26,9 +24,10 @@ app.add_middleware(
     allow_credentials = True
 )
 
+
 @app.get("/")
 async def root(db:session=Depends(get_db)):
-    settings = db.query(Posts).order_by(Posts.created_at.desc()).filter(Posts.status=="schedule").all()
+    settings = db.query(Posts).order_by(Posts.created_at.desc()).all()
     try:
         settings = [s.to_dict(['']) for s in settings]
         return settings
@@ -38,17 +37,6 @@ async def root(db:session=Depends(get_db)):
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e)
         )
-
-@app.get("/send_file")
-async def send_file(filename:str):
-    try:
-
-        return FileResponse(path=filename)
-    except Exception as e:
-        print(str(e))
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=str(e)
-        )
+        
 for bp in all_blue_prints:
     app.include_router(bp)

@@ -1,4 +1,5 @@
 from fastapi import APIRouter, HTTPException, Response, Request, status, Depends, UploadFile, File, Form, Query
+from fastapi.responses import FileResponse, StreamingResponse
 from sqlalchemy.orm import Session as session
 import os
 from uuid import uuid4
@@ -8,7 +9,7 @@ from src.models import Posts, Tags
 from src.database import get_db
 from config import (get_user_agent, 
                     MAX_LENGTH, ALLOW_EXTENSTION,
-                    delete_file, decode_token, UPLOAD_FOLDER, create_slug
+                    delete_file, decode_token, UPLOAD_FOLDER, create_slug, find_file
                     )
 
 posts_blue_print = APIRouter(prefix="/posts")
@@ -269,6 +270,19 @@ async def search_blog(q:str, request:Request, db:session=Depends(get_db)):
         
         tags = [t.to_dict() for t in tags]
         return tags
+    except Exception as e:
+        print(e)
+        raise HTTPException(
+            status_code=400,
+            detail=str(e)
+        )
+
+@posts_blue_print.get("/send_file")
+async def send_file(filename:str):
+    try:
+        file = await find_file(filename)
+        
+        return FileResponse(file)
     except Exception as e:
         print(e)
         raise HTTPException(

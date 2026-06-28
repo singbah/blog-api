@@ -37,22 +37,18 @@ class Setting(Base, Mixin):
     updated_at:Mapped[datetime] = mapped_column(default=datetime.now())
    
 
-class Inquiries(Base, Mixin):
-    __tablename__= "inquiries"
+class ContactMessage(Base, Mixin):
+    __tablename__= "contact_messages"
     id:Mapped[int] = mapped_column(primary_key=True)
     name:Mapped[str] = mapped_column(nullable=False)
     email:Mapped[str] = mapped_column(nullable=False)
-    phone:Mapped[str]
-    subject:Mapped[str] 
-    message:Mapped[str]
-    service_type:Mapped[str]
-    budget_range:Mapped[str]
+    source:Mapped[str] 
+    message:Mapped[str] = mapped_column(nullable=False)
     status:Mapped[str] = mapped_column(default="new")
     ip_address:Mapped[str]
     created_at:Mapped[datetime] = mapped_column(default=datetime.now())
     updated_at:Mapped[datetime] = mapped_column(default=datetime.now())
     
-
 class Posts(Base, Mixin):
     __tablename__='posts'
     
@@ -71,13 +67,14 @@ class Posts(Base, Mixin):
     published_at:Mapped[datetime] = mapped_column(default=datetime.utcnow())
     
     
-class Leads(Base, Mixin):
-    __tablename__ = 'leads'
+class NewsLetter(Base, Mixin):
+    __tablename__ = 'news_letters'
     
     id:Mapped[int] = mapped_column(primary_key=True)
     name:Mapped[str]
     email:Mapped[str] = mapped_column(unique=True, nullable=False)
     status:Mapped[str] = mapped_column(default='subscribed')
+    source:Mapped[str] = mapped_column(default='subscribed')
     tags:Mapped[str]
     last_open:Mapped[datetime]
     ip_address:Mapped[str]
