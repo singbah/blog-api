@@ -61,22 +61,67 @@ async def login(logdata:AdminLogin, request:Request, response:Response, db:ses=D
             key="access_token",
             value=access_token,
             secure=True, 
-            samesite='lax',
-            httponly=True
+            samesite='None',
+            httponly=True,
+            partitioned=True
         )
         # REFRESH TOKEN
         response.set_cookie(
             key="refresh_token",
             value=refresh_token,
             secure=True, 
-            samesite='lax',
-            httponly=True
+            samesite='None',
+            httponly=True,
+            partitioned=True
         )
         
-        return admin.to_dict(['blocked_ip_address', 'ip_block', 'max_att', "account_lock_delay"])
+        return admin.to_dict()
     except Exception as e:
         print(e)
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e)
         ) 
+
+@auths_bp.post('/refresh')
+async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
+    try:
+        token = request.cookies.get("access_token")
+        
+        if not token:
+            raise HTTPException(
+                status_code=401,
+                detail="You are already logout"
+            )
+            
+        payload = decode_token(token)
+        if not payload:
+            raise HTTPException(
+                status_code=400,
+                detail='an error occur'
+            )
+        
+        admin = db.query(Admin).filter(Admin.id==payload.get("id")).first()
+        return admin.to_dict()
+    except Exception as e:
+        print(e)
+        raise HTTPException(
+            status_code=400,
+            detail=str(e)
+        )
+
+@auths_bp.post("/logout")
+async def logout(response:Response, request:Request):
+    try:     
+        response.delete_cookie(
+            key='access_token',
+            samesite='lax'
+        )
+        return {"detail":"you are logout"}
+    except Exception as e:
+        print(e)
+        raise HTTPException(
+            status_code=400,
+            detail=str(e)
+        )
+    

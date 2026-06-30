@@ -52,14 +52,15 @@ async def get_tags(request:Request, db:session=Depends(get_db)):
             detail=str(e)
         )
 
-# ADD NEW POST
-@posts_blue_print.post("/posts")
+# CREATE NEW POST
+@posts_blue_print.post("/create_post")
 async def post_blog(
     response:Response, 
     request:Request,
     title:str = Form(...),
     excert:str=Form(...),
     content:str=Form(...),
+    published_at:str=Form(...),
     photo:UploadFile=File(...),
     db:session=Depends(get_db)
     ):
@@ -102,6 +103,13 @@ async def post_blog(
             fd.write(file_content)
         
         slug = create_slug(title)
+        existing_slug = db.query(Posts).filter(Posts.slug==slug).first()
+        if existing_slug:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="this post already exist"
+            )
+        
         now = datetime.utcnow()
         new_post = Posts(
             title=title, excert=excert, content=content, 
@@ -153,18 +161,16 @@ async def edit_post(edit_data:dict, request:Request, db:session=Depends(get_db))
         )
 
 # GET A POST
-@posts_blue_print.get("/post")
-async def get_post(post_id:int, request:Request, db:session=Depends(get_db)):
+@posts_blue_print.get("/post/{postSlug}")
+async def get_post(postSlug:str, request:Request, db:session=Depends(get_db)):
     try:
-        blog = db.query(Posts).filter(Posts.id==post_id).first()
+        blog = db.query(Posts).filter(Posts.slug==postSlug).first()
         if not blog:
             raise HTTPException(
                 status_code=404,
                 detail="Blog Not Found"
             )
         
-        for d in blog.tags:
-            print(d.to_dict())
         return blog.to_dict()
     except Exception as e:
         print(e)
@@ -266,9 +272,10 @@ async def search_tag(request:Request, tag_info:dict, db:session=Depends(get_db))
 @posts_blue_print.get("/search/blog")
 async def search_blog(q:str, request:Request, db:session=Depends(get_db)):
     try:
-        tags = db.query(Posts).filter(Posts.title.ilike(f"%{q}%"))
+        tags = db.query(Posts).filter(Posts.slug.ilike(f"%{q}%"))
         
         tags = [t.to_dict() for t in tags]
+        print(tags)
         return tags
     except Exception as e:
         print(e)
