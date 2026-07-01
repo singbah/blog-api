@@ -29,7 +29,7 @@ app.add_middleware(
 async def root(db:session=Depends(get_db)):
     settings = db.query(Posts).order_by(Posts.created_at.desc()).all()
     try:
-        settings = [s.to_dict(['']) for s in settings]
+        settings = [s.to_dict() for s in settings]
         return settings
     except Exception as e:
         print(e)

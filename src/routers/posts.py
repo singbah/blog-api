@@ -71,6 +71,7 @@ async def post_blog(
         
         ua = get_user_agent(user_agent_str)
         ip_address = request.client.host
+        status_ = ''
         
         payload = decode_token(request.cookies.get("access_token"))
         if not payload or payload.get("role") != 'admin':
@@ -122,18 +123,19 @@ async def post_blog(
         time_str = datetime.strptime(published_time, "%H:%M").time()
         time_format = time_str.hour, time_str.minute
         
+        status_ = 'schefule'
+        
         if schefule_date == now_date and now_time == time_format:
-            status = "Published"
+            status_ = "Published"
             published_at =  now
-        else:
-            status = "schedule"
+        
             
 
-        print(published)
+        print(published)    
         print(published)
         new_post = Posts(
             title=title, excert=excert, content=content, 
-            featured_image=file_url, slug=slug, published_at=published_at, status=status
+            featured_image=file_url, slug=slug, published_at=published_at, status="published"
         )
         db.add(new_post)
         db.commit()
