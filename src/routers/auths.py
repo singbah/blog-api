@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Request, Response, HTTPException, status, Depends
+from datetime import datetime, timedelta
 from sqlalchemy.orm import Session as ses
 
 from src.models import Admin
@@ -100,8 +101,20 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
                 status_code=400,
                 detail='an error occur'
             )
-        
         admin = db.query(Admin).filter(Admin.id==payload.get("id")).first()
+        
+        payload['exp'] = NOW + timedelta(days=7)
+        
+        response.set_cookie(
+            key="access_tokey",
+            value=payload,
+            samesite="none",
+            httponly=True,
+            secure=True,
+            partitioned=True
+        )
+        
+        # print(admin.to_dict())
         return admin.to_dict()
     except Exception as e:
         print(e)

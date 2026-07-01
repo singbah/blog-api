@@ -62,7 +62,8 @@ async def post_blog(
     content:str=Form(...),
     published_at:str=Form(...),
     photo:UploadFile=File(...),
-    db:session=Depends(get_db)
+    db:session=Depends(get_db),
+    published_time:str=Form(...)
     ):
     try:
         
@@ -111,16 +112,35 @@ async def post_blog(
             )
         
         now = datetime.utcnow()
+        now_time = (now.hour, now.minute)
+        now_date = (now.year, now.month, now.day)
+        
+        
+        published = datetime.strptime(published_at, "%Y-%m-%d")
+        schefule_date = (published.year, published.month, published.day)
+        
+        time_str = datetime.strptime(published_time, "%H:%M").time()
+        time_format = time_str.hour, time_str.minute
+        
+        if schefule_date == now_date and now_time == time_format:
+            status = "Published"
+            published_at =  now
+        else:
+            status = "schedule"
+            
+
+        print(published)
+        print(published)
         new_post = Posts(
             title=title, excert=excert, content=content, 
-            featured_image=file_url, slug=slug, published_at=now + timedelta(hours=1), status='schedule'
+            featured_image=file_url, slug=slug, published_at=published_at, status=status
         )
         db.add(new_post)
         db.commit()
         db.flush(new_post)
         
         print(new_post.tags)
-        return new_post.to_dict()
+        return {"detail":"Yes it work"}
 
     except Exception as e:
         print(e)

@@ -7,6 +7,7 @@ from passlib.context import CryptContext
 from dotenv import load_dotenv
 import user_agents
 from uuid import uuid4 as uid
+import unicodedata, re
 
 
 
@@ -140,8 +141,21 @@ def get_user_agent(user_agent_string):
         "is_bot": ua.is_bot,
     }
 
-def create_slug(string_:str):
-    string_ = string_.replace(" ", "-")
-    return string_.lower()
+def create_slug(title:str):
+    if not title:
+        return "untitled"
+    
+    slug = unicodedata.normalize("NFKD", title,).encode("ascii", "ignore").decode("ascii")
 
+    slug = slug.lower()
+    slug = re.sub(r"[^a-z0-9]+", "-", slug)
+    
+    slug = slug.strip("-")
+    slug = re.sub(r'-{2}', "-", slug)
+    
+    return slug or "untitled"
 
+def schedule_format(date_str):
+    today_date = NOW.date()
+    time_ = NOW.time()
+    print(date_str)    
