@@ -5,3 +5,4 @@ from sqlalchemy.orm import Session as sec
 
 admin_bp = APIRouter(prefix="/admin")
 
+# @admin_bp.post("/create_post")

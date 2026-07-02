@@ -42,10 +42,12 @@ class ContactMessage(Base, Mixin):
     id:Mapped[int] = mapped_column(primary_key=True)
     name:Mapped[str] = mapped_column(nullable=False)
     email:Mapped[str] = mapped_column(nullable=False)
+    ip_address:Mapped[str]
     source:Mapped[str] 
     message:Mapped[str] = mapped_column(nullable=False)
     status:Mapped[str] = mapped_column(default="new")
-    ip_address:Mapped[str]
+    user_agent:Mapped[str] = mapped_column(nullable=True)
+    newsletter:Mapped[bool] = mapped_column(default=False)
     created_at:Mapped[datetime] = mapped_column(default=datetime.now())
     updated_at:Mapped[datetime] = mapped_column(default=datetime.now())
     
@@ -74,10 +76,10 @@ class NewsLetter(Base, Mixin):
     name:Mapped[str]
     email:Mapped[str] = mapped_column(unique=True, nullable=False)
     status:Mapped[str] = mapped_column(default='subscribed')
-    source:Mapped[str] = mapped_column(default='subscribed')
-    tags:Mapped[str]
-    last_open:Mapped[datetime]
+    source:Mapped[str]
+    last_open:Mapped[datetime] = mapped_column(default=datetime.now())
     ip_address:Mapped[str]
+    user_agent:Mapped[str] = mapped_column(default=None)
     created_at:Mapped[datetime] = mapped_column(default=datetime.now())
     updated_at:Mapped[datetime] = mapped_column(default=datetime.now())
  

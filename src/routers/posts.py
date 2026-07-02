@@ -43,7 +43,6 @@ async def get_tags(request:Request, db:session=Depends(get_db)):
 
         tags = db.query(Tags).order_by(Tags.created_at.desc()).limit(100)
         tags = [p.to_dict('') for p in tags]
-        
         return tags
     except Exception as e:
         print(e)
@@ -80,6 +79,14 @@ async def post_blog(
                 detail="Unauthorized attempt"
             )
         
+        slug = create_slug(title)
+        existing_slug = db.query(Posts).filter(Posts.slug==slug).first()
+        if existing_slug:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="this post already exist"
+            )
+            
         if photo.content_type not in ALLOW_EXTENSTION:
             print("File extenstion not validid")
             raise HTTPException(
@@ -104,13 +111,7 @@ async def post_blog(
         with open(file_path, 'wb') as fd:
             fd.write(file_content)
         
-        slug = create_slug(title)
-        existing_slug = db.query(Posts).filter(Posts.slug==slug).first()
-        if existing_slug:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="this post already exist"
-            )
+        
         
         now = datetime.utcnow()
         now_time = (now.hour, now.minute)
@@ -142,11 +143,10 @@ async def post_blog(
         db.flush(new_post)
         
         print(new_post.tags)
-        return {"detail":"Yes it work"}
+        return {"detail":"New Post Created"}
 
     except Exception as e:
         print(e)
-        await delete_file('featured_image')
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e)
@@ -192,7 +192,7 @@ async def get_post(postSlug:str, request:Request, db:session=Depends(get_db)):
                 status_code=404,
                 detail="Blog Not Found"
             )
-        
+        print(blog.tags)
         return blog.to_dict()
     except Exception as e:
         print(e)
@@ -310,6 +310,11 @@ async def search_blog(q:str, request:Request, db:session=Depends(get_db)):
 async def send_file(filename:str):
     try:
         file = await find_file(filename)
+        if not file:
+            raise HTTPException(
+                status_code=404,
+                detail="file not found"
+            )
         
         return FileResponse(file)
     except Exception as e:

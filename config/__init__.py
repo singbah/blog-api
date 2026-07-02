@@ -92,7 +92,7 @@ async def delete_file(file_url):
 # FIND FILE
 async def find_file(file_url):
     file_found = os.path.join(UPLOAD_FOLDER + file_url)
-    if not file_found:
+    if not os.path.exists(file_found):
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="file not found in directory"

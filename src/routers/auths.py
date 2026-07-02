@@ -105,9 +105,11 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
         
         payload['exp'] = NOW + timedelta(days=7)
         
+        new_access_token = create_token(payload)
+        
         response.set_cookie(
-            key="access_tokey",
-            value=payload,
+            key="access_token",
+            value=new_access_token,
             samesite="none",
             httponly=True,
             secure=True,
@@ -126,10 +128,8 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
 @auths_bp.post("/logout")
 async def logout(response:Response, request:Request):
     try:     
-        response.delete_cookie(
-            key='access_token',
-            samesite='lax'
-        )
+        # response.delete_cookie()
+        request.cookies.clear()
         return {"detail":"you are logout"}
     except Exception as e:
         print(e)
