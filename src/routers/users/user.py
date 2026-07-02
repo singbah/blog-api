@@ -15,7 +15,6 @@ async def create_user(request:Request, user:dict, db:ses=Depends(get_db)):
         ip_address = request.client.host
         user_agent_str = request.headers.get("user-agent")
         ua = get_user_agent(user_agent_str)
-        
         email = user.get("email")
         
         existing_user = db.query(NewsLetter).filter(NewsLetter.email == email).first()
@@ -27,7 +26,6 @@ async def create_user(request:Request, user:dict, db:ses=Depends(get_db)):
                 detail="User already exist in database"
             )
         
-    
         if not user.get("name").strip() or user.get("name") == "":
             user['name'] = 'user'
         
@@ -35,8 +33,9 @@ async def create_user(request:Request, user:dict, db:ses=Depends(get_db)):
         
         user['ip_address'] = ip_address
         user['user_agent'] = str(ua)
+        user['created_at'] = now
+        user['updated_at'] = now
         user['status'] = 'subscribed'
-        # user['last_open'] = now
         
         new_user = NewsLetter(**user)
         db.add(new_user)
@@ -56,26 +55,39 @@ async def create_user(request:Request, user:dict, db:ses=Depends(get_db)):
 async def create_contact(request:Request, user:dict, db:ses=Depends(get_db)):
     try:
         new_contact = {}
+        newsletter = user.get("newsletter")
         ua = get_user_agent(request.headers.get("user-agent"))
         ip_address = request.client.host
-        newsletter = user.get("newsletter")
+        now = datetime.now()
         email = user.get("email")
         
         existing_newsletter_user = db.query(NewsLetter).filter(NewsLetter.email==email).first()
         
         user['status'] = 'New'
         user['ip_address'] = ip_address  
-        user['user_agent'] = ua      
-        print('user:', user)
+        user['user_agent'] = str(ua)
+        user['created_at'] = now   
+        user['updated_at'] = now   
         
-        if existing_newsletter_user:
-            existing_newsletter_user.name = user.get("name")
-            
-        new_newsletter_user = user
-        new_newsletter_user['status'] = 'subscribed'
-        print('newsletter user:', new_newsletter_user)
+        new_user = ContactMessage(**user)   
+        db.add(new_user)
+        db.commit()
+        db.flush(new_user)
         
+
+        if newsletter:
+            if existing_newsletter_user:
+                existing_newsletter_user.name = user.get("name")
+            elif not existing_newsletter_user:
+                new_newsletter_user = user
+                new_newsletter_user['status'] = 'subscribed'
+                new_newsletter_user = ContactMessage(**new_newsletter_user)
+                db.add(new_newsletter_user)
+                db.commit()
+                db.flush(new_newsletter_user)
         
+        return {"detail":"I'd reveice your message and we will reach out to you soon"}
+    
     except Exception as e:
         print(e)
         raise HTTPException(

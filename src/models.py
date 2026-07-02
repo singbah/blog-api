@@ -45,6 +45,7 @@ class ContactMessage(Base, Mixin):
     ip_address:Mapped[str]
     source:Mapped[str] 
     message:Mapped[str] = mapped_column(nullable=False)
+    subject:Mapped[str] = mapped_column(nullable=False)
     status:Mapped[str] = mapped_column(default="new")
     user_agent:Mapped[str] = mapped_column(nullable=True)
     newsletter:Mapped[bool] = mapped_column(default=False)

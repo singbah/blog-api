@@ -294,11 +294,11 @@ async def search_tag(request:Request, tag_info:dict, db:session=Depends(get_db))
 @posts_blue_print.get("/search/blog")
 async def search_blog(q:str, request:Request, db:session=Depends(get_db)):
     try:
-        tags = db.query(Posts).filter(Posts.slug.ilike(f"%{q}%"))
+        blogs = db.query(Posts).filter(Posts.title.ilike(f"%{q}%"))
         
-        tags = [t.to_dict() for t in tags]
-        print(tags)
-        return tags
+        blogs = [t.to_dict() for t in blogs]
+        print(blogs)
+        return blogs
     except Exception as e:
         print(e)
         raise HTTPException(
