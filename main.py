@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Depends, HTTPException, status, Query
 from fastapi.middleware.cors import CORSMiddleware
 from src.database import Base, engine
 from sqlalchemy.orm import Session as session
@@ -11,7 +11,11 @@ from src.routers import all_blue_prints
 
 
 load_dotenv()
-origin = os.getenv('ORIGINS')
+origin = [
+    "easitechlr.com",
+    "https://www.easitechlr.com",
+    "http://localhost:5173"
+    ]
 
 app = FastAPI(title="Easi Tech Lr. Blog")
 Base.metadata.create_all(bind=engine)
@@ -26,11 +30,19 @@ app.add_middleware(
 
 
 @app.get("/")
-async def root(db:session=Depends(get_db)):
-    settings = db.query(Posts).order_by(Posts.created_at.desc()).all()
+async def root(db:session=Depends(get_db), cursor:int=Query(None), limit:int=Query(ge=20, le=20, limit=100)):
+    posts = db.query(Posts).order_by(Posts.id.desc())
     try:
-        settings = [s.to_dict() for s in settings]
-        return settings
+        if cursor:
+            posts = posts.filter(Posts.id < cursor)
+            
+        posts = posts.limit(limit).all()
+        posts = [s.to_dict() for s in posts]
+        return {
+            "posts": posts,
+            "last_id": posts[-1].get("id") if posts else None,
+            "has_more": len(posts) == limit
+        }
     except Exception as e:
         print(e)
         raise HTTPException(

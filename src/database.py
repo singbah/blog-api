@@ -11,7 +11,10 @@ load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL") 
 
-engine = create_engine(DATABASE_URL)
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL environment variable is not set.")
+
+engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 
 SessionLocal = sessionmaker(
     bind=engine,
@@ -62,7 +65,7 @@ class Mixin(DeclarativeBase):
             result[name] = value
         return result
     
-    def update(self, update_data:dict|None=None, exclude=['featured_image', 'id', 'createf_at']):
+    def update(self, update_data:dict|None=None, exclude=['featured_image', 'id', 'created_at']):
         for k, v in update_data.items():
             if k in exclude:
                 print("can't change the value of ", k)

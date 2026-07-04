@@ -42,7 +42,6 @@ async def create_user(request:Request, user:dict, db:ses=Depends(get_db)):
         db.commit()
         db.flush(new_user)
         
-        print(new_user.to_dict())
         return{"detail":"Thanks for reaching out i will reply you soon.."}
     except Exception as e:
         print(e)

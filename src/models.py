@@ -1,5 +1,6 @@
+from sqlalchemy import DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from datetime import datetime
+from datetime import datetime, timezone
 from src.database import Base, Mixin, post_tags
 
 class Admin(Base, Mixin):
@@ -25,7 +26,7 @@ class BlockIPAddresses(Base, Mixin):
     ip_address:Mapped[str] = mapped_column(nullable=False)
     user_agent:Mapped[str] = mapped_column(nullable=False)
     end_point:Mapped[str] = mapped_column(nullable=False)
-    created_at:Mapped[datetime] = mapped_column(default=datetime.utcnow())
+    created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
 
 class Setting(Base, Mixin):
     __tablename__ = 'settings'
@@ -33,8 +34,8 @@ class Setting(Base, Mixin):
     key:Mapped[str] = mapped_column(unique=True, nullable=False)
     value:Mapped[str]
     type:Mapped[str] = mapped_column(default='text')
-    created_at:Mapped[datetime] = mapped_column(default=datetime.now())
-    updated_at:Mapped[datetime] = mapped_column(default=datetime.now())
+    created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
    
 
 class ContactMessage(Base, Mixin):
@@ -49,8 +50,8 @@ class ContactMessage(Base, Mixin):
     status:Mapped[str] = mapped_column(default="new")
     user_agent:Mapped[str] = mapped_column(nullable=True)
     newsletter:Mapped[bool] = mapped_column(default=False)
-    created_at:Mapped[datetime] = mapped_column(default=datetime.now())
-    updated_at:Mapped[datetime] = mapped_column(default=datetime.now())
+    created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
     
 class Posts(Base, Mixin):
     __tablename__='posts'
@@ -62,14 +63,14 @@ class Posts(Base, Mixin):
     content:Mapped[str] = mapped_column(nullable=False)
     author:Mapped[str]
     featured_image:Mapped[str]
+    file_key:Mapped[str] = mapped_column(nullable=True)
     status:Mapped[str] = mapped_column(default='draft')
-    view:Mapped[int] = mapped_column(default=0)
+    views:Mapped[int] = mapped_column(default=0)
     tags:Mapped[list['Tags']]=relationship(secondary=post_tags, back_populates='posts')
-    created_at:Mapped[datetime] = mapped_column(default=datetime.now())
-    updated_at:Mapped[datetime] = mapped_column(default=datetime.now())
-    published_at:Mapped[datetime] = mapped_column(default=datetime.utcnow())
-    
-    
+    created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    published_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+     
 class NewsLetter(Base, Mixin):
     __tablename__ = 'news_letters'
     
@@ -81,8 +82,8 @@ class NewsLetter(Base, Mixin):
     last_open:Mapped[datetime] = mapped_column(default=datetime.now())
     ip_address:Mapped[str]
     user_agent:Mapped[str] = mapped_column(default=None)
-    created_at:Mapped[datetime] = mapped_column(default=datetime.now())
-    updated_at:Mapped[datetime] = mapped_column(default=datetime.now())
+    created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
  
 class Tags(Base, Mixin):
     __tablename__ = 'tags'
@@ -92,7 +93,19 @@ class Tags(Base, Mixin):
     slug:Mapped[str] = mapped_column(nullable=False, unique=True)
     description:Mapped[str] = mapped_column(nullable=True)
     posts:Mapped[list['Posts']] = relationship(secondary=post_tags, back_populates='tags')
-    created_at:Mapped[datetime] = mapped_column(default=datetime.now())
+    created_at:Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        default=datetime.now(timezone.utc)
+    )
 
-    
-    
+
+class SiteVisit(Base):
+    __tablename__ = "site_visits"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+    path: Mapped[str]
+    ip_address: Mapped[str] 
+    user_agent: Mapped[str] 
+    referer: Mapped[str] = mapped_column(nullable=True)
+    created_at: Mapped[datetime] = mapped_column(default=datetime.now(timezone.utc))

@@ -7,7 +7,17 @@ from passlib.context import CryptContext
 from dotenv import load_dotenv
 import user_agents
 from uuid import uuid4 as uid
-import unicodedata, re
+import re, unicodedata
+import logging
+
+from jinja2 import Environment, FileSystemLoader
+from pathlib import Path
+from fastapi_mail import (
+    FastMail,
+    MessageSchema,
+    MessageType,
+    ConnectionConfig,
+)
 
 
 
@@ -19,9 +29,6 @@ APP_KEY = os.getenv("APP_KEY")
 
 NOW  = datetime.now()
 
-UPLOAD_FOLDER = os.path.join(os.getcwd(), "static", "upload")
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
 MAX_LENGTH = 1024*1024*20
 ALLOW_EXTENSTION = {'image/jpeg', 'image/png', 'image/jpg', 'video/mp4', 'video/od'}
 
@@ -30,23 +37,70 @@ IP_BLOCK_ATTEMPT = 5
 UUID = uid().hex
 ACCOUNT_LOCK_DELAY = NOW + timedelta(minutes=1)
 
-# APPLY IP BLOCK
-# def block_supecious_ip(ip_address:str, user_agent, end_point, db:None):
-#     attempt = IP_BLOCK_ATTEMPT
+log_dir = Path("logs")
+log_dir.mkdir(exist_ok=True)
+
+logger = logging.getLogger("easitechlr")
+logger.setLevel(logging.INFO)
+
+if not logger.handlers:
+    file_handler = logging.FileHandler(
+        log_dir / "server.log", encoding="utf-8"
+    )
     
-#     attempt -= 1
-#     if IP_BLOCK_ATTEMPT-1 <= 0:
-#         new_block_ip = BlockIPAddresses(
-#             ip_address=ip_address,
-#             user_agent=user_agent, 
-#             end_point=end_point
-#         )
-#         db.add(new_block_ip)
-#         db.commit()
-#         db.flush(new_block_ip)
-#         return {"detail":"This ip is block"}
-        
-    
+    fomatter = logging.Formatter(
+        "%(asctime)s | %(levelname)s | %(message)s"
+    )
+    file_handler.setFormatter(fomatter)
+    logger.addHandler(file_handler)
+
+
+template_dir = Path(__file__).parent.parent / "templates" / "emails"
+
+env = Environment(
+    loader=FileSystemLoader(template_dir)
+)
+
+conf = ConnectionConfig(
+    MAIL_USERNAME=str(os.getenv("MAIL_USERNAME")),
+    MAIL_PASSWORD=str(os.getenv("MAIL_PASSWORD")),
+    MAIL_FROM=str(os.getenv("MAIL_FROM")),
+    MAIL_PORT=587,
+    MAIL_SERVER=str(os.getenv("MAIL_SERVER")),
+    MAIL_STARTTLS=True,
+    MAIL_SSL_TLS=False,
+    USE_CREDENTIALS=True,
+)
+
+
+template_dir = Path(__file__).parent.parent / "templates" / "emails"
+
+env = Environment(
+    loader=FileSystemLoader(template_dir)
+)
+
+
+async def send_email(
+    recipients: list[str],
+    subject: str,
+    template_name: str,
+    context: dict,
+):
+    template = env.get_template(template_name)
+
+    html = template.render(**context)
+
+    message = MessageSchema(
+        subject=subject,
+        recipients=recipients,
+        body=html,
+        subtype=MessageType.html,
+    )
+
+    fm = FastMail(conf)
+
+    await fm.send_message(message)
+
 # CREATE TOKEN
 def create_token(user_data:dict, exps=60*60*5):
     try:
@@ -70,35 +124,6 @@ def decode_token(token)->dict:
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e)
         )
-
-# DELETE A FILE FROM DIRECTORY
-async def delete_file(file_url):
-    try:
-        file_to_delete = os.path.join(UPLOAD_FOLDER + file_url)
-        if not os.path.exists(file_to_delete):
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail='File not found in directory'
-            )
-        print(file_to_delete, 'is deleted')
-        os.remove(file_to_delete)
-    except Exception as e:
-        print(e)
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=str(e)
-        )
-
-# FIND FILE
-async def find_file(file_url):
-    file_found = os.path.join(UPLOAD_FOLDER + file_url)
-    if not os.path.exists(file_found):
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="file not found in directory"
-        )
-    
-    return file_found
 
 # HASH PASSWORD
 def hash_password(password:str):
@@ -155,7 +180,3 @@ def create_slug(title:str):
     
     return slug or "untitled"
 
-def schedule_format(date_str):
-    today_date = NOW.date()
-    time_ = NOW.time()
-    print(date_str)    

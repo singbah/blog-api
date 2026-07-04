@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            font-family:Arial,sans-serif;
+            background:#f4f4f4;
+            margin:0;
+            padding:30px;
+        }
+
+        .card{
+            max-width:600px;
+            margin:auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+        }
+
+        h1{
+            color:#2563eb;
+        }
+
+        .button{
+            display:inline-block;
+            background:#2563eb;
+            color:white;
+            text-decoration:none;
+            padding:12px 20px;
+            border-radius:6px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Welcome {{ name }}!</h1>
+
+<p>
+Thanks for subscribing to
+<strong>Monrovia Money</strong>.
+</p>
+
+<p> You'll receive updates on:</p>
+
+<ul>
+    <li>Market Prices</li>
+    <li>Fuel Prices</li>
+    <li>Exchange Rates</li>
+    <li>Financial Tips</li>
+</ul>
+<a
+    class="button"
+    href="{{ website }}">
+    Visit Website
+</a>
+
+</div>
+
+<div class="padding">
+    {{body}}
+</div>
+
+</body>
+</html>

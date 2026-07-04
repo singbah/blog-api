@@ -62,7 +62,7 @@ async def login(logdata:AdminLogin, request:Request, response:Response, db:ses=D
             key="access_token",
             value=access_token,
             secure=True, 
-            samesite='None',
+            samesite='none',
             httponly=True,
             partitioned=True
         )
@@ -71,7 +71,7 @@ async def login(logdata:AdminLogin, request:Request, response:Response, db:ses=D
             key="refresh_token",
             value=refresh_token,
             secure=True, 
-            samesite='None',
+            samesite='none',
             httponly=True,
             partitioned=True
         )
@@ -92,7 +92,7 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
         if not token:
             raise HTTPException(
                 status_code=401,
-                detail="You are already logout"
+                detail="Token not found"
             )
             
         payload = decode_token(token)
@@ -128,8 +128,11 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
 @auths_bp.post("/logout")
 async def logout(response:Response, request:Request):
     try:     
-        # response.delete_cookie()
+        response.delete_cookie(
+            key="access_token"
+        )
         request.cookies.clear()
+        
         return {"detail":"you are logout"}
     except Exception as e:
         print(e)
