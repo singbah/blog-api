@@ -2,7 +2,7 @@ from fastapi import HTTPException, status, Depends
 from sqlalchemy.orm import Session as ses
 import re, os
 from datetime import datetime, timedelta
-from jose import jwt
+from jose import jwt, ExpiredSignatureError
 from passlib.context import CryptContext
 from dotenv import load_dotenv
 import user_agents
@@ -13,10 +13,8 @@ import logging
 from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 from fastapi_mail import (
-    FastMail,
-    MessageSchema,
-    MessageType,
-    ConnectionConfig,
+    FastMail, MessageSchema,
+    MessageType, ConnectionConfig,
 )
 
 
@@ -104,25 +102,26 @@ async def send_email(
 # CREATE TOKEN
 def create_token(user_data:dict, exps=60*60*5):
     try:
-        exp = NOW + timedelta(seconds=exps)
-        user_data.update({"exp":exp})
+        exp = datetime.now() + timedelta(seconds=exps)
+        payload = user_data.copy()
+        payload["exp"] = exp
         
-        token = jwt.encode(user_data, key=APP_KEY, algorithm=ALGORITHM)
+        token = jwt.encode(payload, key=APP_KEY, algorithm=ALGORITHM)
         return token
     except Exception as e:
-        print(str(e))
-        return str(e)
+        logger.exception("Failed to create JWT")
+        raise
 
 # DECODE TOKEN
 def decode_token(token)->dict:
     try:
         payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
         return payload
-    except Exception as e:
-        print(e)
+    except ExpiredSignatureError:
+        logger.exception("Token has expired")
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=str(e)
+            status_code=401,
+            detail="Token has expired"
         )
 
 # HASH PASSWORD

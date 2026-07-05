@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.database import Base, engine
 from sqlalchemy.orm import Session as session
 from dotenv import load_dotenv
-import os
+from datetime import datetime
 
 from src.models import Posts
 from src.database import get_db
@@ -31,7 +31,7 @@ app.add_middleware(
 
 @app.get("/")
 async def root(db:session=Depends(get_db), cursor:int=Query(None), limit:int=Query(ge=20, le=20, limit=100)):
-    posts = db.query(Posts).order_by(Posts.id.desc())
+    posts = db.query(Posts).order_by(Posts.id.desc()).filter(Posts.published_at<=datetime.now())
     try:
         if cursor:
             posts = posts.filter(Posts.id < cursor)

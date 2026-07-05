@@ -10,12 +10,11 @@ class Admin(Base, Mixin):
     username:Mapped[str] = mapped_column(nullable=False)
     email:Mapped[str] = mapped_column(nullable=False)
     phone:Mapped[str]
+    role:Mapped[str] = mapped_column(default="admin")
     password:Mapped[str] = mapped_column(nullable=False)
-    max_att:Mapped[int] = mapped_column(default=0)
-    ip_block:Mapped[bool]= mapped_column(default=False)
-    blocked_ip_address:Mapped[str] = mapped_column(default=None)
-    account_lock_delay:Mapped[datetime] = mapped_column(default=None)
-    last_login:Mapped[datetime]
+    max_att:Mapped[int] = mapped_column(default=0, nullable=True)
+    account_lock_delay:Mapped[datetime] = mapped_column(default=None, nullable=True)
+    last_login:Mapped[datetime] = mapped_column(nullable=True)
     created_at:Mapped[datetime] = mapped_column(default=datetime.now())
     updated_at:Mapped[datetime] = mapped_column(default=datetime.now())
     
@@ -23,6 +22,7 @@ class BlockIPAddresses(Base, Mixin):
     __tablename__ = 'blocked_ip_addresses'
     
     id:Mapped[int] = mapped_column(primary_key=True)
+    phone:Mapped[int] = mapped_column(nullable=False)
     ip_address:Mapped[str] = mapped_column(nullable=False)
     user_agent:Mapped[str] = mapped_column(nullable=False)
     end_point:Mapped[str] = mapped_column(nullable=False)
@@ -47,7 +47,7 @@ class ContactMessage(Base, Mixin):
     source:Mapped[str] 
     message:Mapped[str] = mapped_column(nullable=False)
     subject:Mapped[str] = mapped_column(nullable=False)
-    status:Mapped[str] = mapped_column(default="new")
+    status:Mapped[str] = mapped_column(default="new", nullable=True)
     user_agent:Mapped[str] = mapped_column(nullable=True)
     newsletter:Mapped[bool] = mapped_column(default=False)
     created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
@@ -79,7 +79,7 @@ class NewsLetter(Base, Mixin):
     email:Mapped[str] = mapped_column(unique=True, nullable=False)
     status:Mapped[str] = mapped_column(default='subscribed')
     source:Mapped[str]
-    last_open:Mapped[datetime] = mapped_column(default=datetime.now())
+    last_open:Mapped[datetime] = mapped_column(default=datetime.now(), nullable=True)
     ip_address:Mapped[str]
     user_agent:Mapped[str] = mapped_column(default=None)
     created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))

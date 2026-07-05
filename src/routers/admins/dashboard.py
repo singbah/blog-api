@@ -33,13 +33,12 @@ async def get_settings(request:Request, db:ses=Depends(get_db)):
             detail=str(e)
         )
 
-
 @admin_bp.get("/analytics")
 async def get_analytics(request:Request, db:ses=Depends(get_db)):
     try:
         token = request.cookies.get("access_token")
         if not token:
-            # logger.log(f"unanthorized attempt on route {get_analytics.__name__}")
+            logger.warning(f"Fail Access {get_analytics.__name__} | IP ADDRESS {request.client.host}")
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="You are not authorized to access this resource"
@@ -47,7 +46,7 @@ async def get_analytics(request:Request, db:ses=Depends(get_db)):
         
         payload = decode_token(token)
         if not payload or payload.get("role") != "admin":
-            # logger.log(f"unanthorized attempt get_analytics route")
+            logger.warning(f"Fail Access | IP ADDRESS {request.client.host}")
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="You are not authorized to access this resource"
@@ -71,9 +70,10 @@ async def get_analytics(request:Request, db:ses=Depends(get_db)):
             "contacts_count": contacts.count(),
             "newsletters_count": newsletter.count()
         }
+        logger.info("get analytics request succeded.")
         return info
     except Exception as e:
-        print(e)
+        logger.exception(f"An error occur at {get_analytics.__name__}")
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, 
             detail=str(e)
@@ -85,7 +85,7 @@ async def get_all_contacts(request:Request, cursor:int=Query(None), limit:int=Qu
     try:
         token = request.cookies.get("access_token")
         if not token:
-            logger.info("unauthorization attempt on get all contacts route")
+            logger.exception(f"unanthorized attempt get_analytics route IP ADDRESS {request.client.host}")
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="You are not authorized to access this resource"
@@ -93,7 +93,7 @@ async def get_all_contacts(request:Request, cursor:int=Query(None), limit:int=Qu
         
         payload = decode_token(token)
         if not payload or payload.get("role") != "admin":
-            logger.error("unauthorization attempt on get all contacts route")
+            logger.exception(f"unanthorized attempt on {get_all_contacts.__name__} route. IP ADDRESS {request.client.host}")
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="You are not authorized to access this resource"
@@ -105,14 +105,15 @@ async def get_all_contacts(request:Request, cursor:int=Query(None), limit:int=Qu
             query = query.filter(ContactMessage.id < cursor)
         
         contacts = query.limit(limit).all()
-        
+        logger.info("Get All contact ran successfully")
         return {
             "contacts": [contact.to_dict() for contact in contacts],
             "last_id": contacts[-1].to_dict().get("id"),
             "has_more": len(contacts) == limit
         }
+        
     except Exception as e:
-        logger.error(str(e))
+        logger.exception("and error occur")
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, 
             detail=str(e)
@@ -120,11 +121,11 @@ async def get_all_contacts(request:Request, cursor:int=Query(None), limit:int=Qu
 
 # GET ALL NEWSLETTER
 @admin_bp.get("/all-newsletters")
-async def get_all_newsletters(request:Request, cursor:int=Query(None), limit:int=Query(ge=20, le=10, limit=100), db:ses=Depends(get_db)):
+async def get_all_newsletters(request:Request, cursor:int=Query(None), limit:int=Query(limit=100), db:ses=Depends(get_db)):
     try:
         token = request.cookies.get("access_token")
         if not token:
-            logger.error(f"Unauthorized attempt on route: get all newsletters")
+            logger.exception(f"Unauthorized attempt on route: get all newsletters IP ADDRESS [{request.client.host}]")
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="You are not authorized to access this resource"
@@ -132,7 +133,7 @@ async def get_all_newsletters(request:Request, cursor:int=Query(None), limit:int
         
         payload = decode_token(token)
         if not payload or payload.get("role") != "admin":
-            logger.error(f"Unauthorized attempt on route: get all newsletters")
+            logger.warning(f"decoding token")
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="You are not authorized to access this resource"
@@ -145,58 +146,95 @@ async def get_all_newsletters(request:Request, cursor:int=Query(None), limit:int
         
         newsletters = query.limit(limit).all()
         
-      
+        logger.info("news letter loaded")
         return {
             "newsletters": [newsletter.to_dict() for newsletter in newsletters],
-            "cursor": newsletters[-1].get("id") if newsletters else None,
+            "cursor": newsletters[-1].to_dict().get("id") if newsletters else None,
             "has_more": len(newsletters) == limit
         }
     except Exception as e:
-        print(e)
+        logger.exception("Error occur her")
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, 
             detail=str(e)
         )
 
-# SEND NEWSLETTER EMAIL
+# SEND NEWSLETTER/CONTACT EMAIL
 @admin_bp.post("/send_newsletter")
 async def send_newsletter_email(user:dict, request:Request, db:ses=Depends(get_db)):
     try:
-        token = request.headers.get("access_token")
+        token = request.cookies.get("access_token")
         ip_address = request.client.host
         
         if not token:
-            error_message = f"IP ADDRESS {ip_address} attempted {send_newsletter_email.__name__}"
-            logger.error(error_message)
+            error_message = f"IP ADDRESS {ip_address} | Token Failed {send_newsletter_email.__name__}"
+            logger.warning(error_message)
             raise HTTPException(
                 status_code=401,
                 detail="You are not authorized to access this source"
             )
         payload = decode_token(token)
         if not payload or payload.get("role") != 'admin':
-            error_message = f"IP ADDRESS {ip_address} attempted {send_newsletter_email.__name__}"
-            logger.error(error_message)
+            error_message = f"IP ADDRESS {ip_address} | Payload Not Found {send_newsletter_email.__name__}"
+            logger.warning(error_message)
             raise HTTPException(
                 status_code=401,
                 detail="You are not authorized to access this source")
             
-        await send_email(
-            recipients=[user.get("email")],
-            subject=user.get("subject"),
-            template_name="newsletter.html",
-            context={
-                "name":user.get("name"),
-                "website":"http://127.0.0.1:8000/",
-                "body":user.get("message")
-            }
-        )
         
-        logger.info(f"email sent to subscriber - ${user.name}")
+        user_type = user_type = (user.get("type") or "").lower()
+
+        if not user_type:
+            logger.warning("user type error")
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="user type error"
+            )
+            
+        if user_type == "newsletter":
+            db_user = db.query(NewsLetter).filter(NewsLetter.email==user.get("email")).first()
+            db_user.last_open = datetime.now(timezone.utc)
+            await send_email(
+                recipients=[user.get("email")],
+                subject=user.get("subject"),
+                template_name="newsletter.html",
+                context={
+                    "name":user.get("name"),
+                    "website":"easitechlr.com/blog",
+                    "body":user.get("message")
+                }
+            )
+        else:
+            db_user = db.query(ContactMessage).filter(ContactMessage.email==user.get("email")).first()
+            if not db_user:
+                logger.warning(f"user with email {user.get("email")} not found")
+                raise HTTPException(
+                    status_code=status.HTTP_404_NOT_FOUND,
+                    detail="User not found!!"
+                )
+            db_user.status = "Emailed"
+            await send_email(
+                recipients=[user.get("email")],
+                subject=user.get("subject"),
+                template_name="contact_email.html",
+                context={
+                    "name":user.get("name"),
+                    "website":"easitechlr.com/contact",
+                    "body":user.get("message")
+                }
+            )
+            
+        db.commit()
+        logger.info(f"Admin {payload.get("email")} emailed {user.get("name")}")
         return {"detail":"Email Send"}
      
-    except Exception as e:
-        logger.info(f"Email not sent, error occur: {e}")
+    except HTTPException:
+        db.rollback()
+        logger.warning("DB error occur")
+        raise
+     
+    except HTTPException:
+        logger.exception(f"Sending Email Failed")
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=str(e)
+            status_code=500
         )

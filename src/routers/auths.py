@@ -2,8 +2,9 @@ from fastapi import APIRouter, Request, Response, HTTPException, status, Depends
 from datetime import datetime, timedelta
 from sqlalchemy.orm import Session as ses
 
-from src.models import Admin
+from src.models import Admin, BlockIPAddresses
 from src.database import get_db
+from config import logger
 from config import (get_user_agent, create_token, decode_token, NOW, 
                     MAX_ATTEMPT, ACCOUNT_LOCK_DELAY, check_password, hash_password)
 from src.schemas import AdminLogin
@@ -17,22 +18,32 @@ async def login(logdata:AdminLogin, request:Request, response:Response, db:ses=D
         ua = get_user_agent(request.headers.get("user-agent"))
         ip_address = request.client.host
         
+        if db.query(BlockIPAddresses).filter(BlockIPAddresses.phone==phone).first():
+            logger.warning(f"Invalid login attempt | Phone: {phone} | IP: {ip_address}")
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Unauthorization attempt"
+            )
+        
+        
         admin = db.query(Admin).filter(Admin.phone==phone).first()
         
         if not admin:
-            
+            logger.warning(f"Invalid login attempt | Phone: {phone} | IP: {ip_address}")
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Not Authorized"
             )
         
         if admin.account_lock_delay and admin.account_lock_delay > NOW:
+            logger.warning(f"Invalid login attempt | Phone: {phone} | IP: {ip_address}")
             raise HTTPException(
                 status_code=status.HTTP_423_LOCKED,
                 detail=f"Your account is temporarily lock for {(admin.account_lock_delay - NOW)}"
             )
         
-        if logdata.password != admin.password:
+        if not check_password(logdata.password, admin.password):
+            logger.warning(f"Failed login | Phone: {phone} | IP: {ip_address}")
             admin.max_att += 1
             if admin.max_att >= MAX_ATTEMPT:
                 admin.account_lock_delay = ACCOUNT_LOCK_DELAY
@@ -75,10 +86,9 @@ async def login(logdata:AdminLogin, request:Request, response:Response, db:ses=D
             httponly=True,
             partitioned=True
         )
-        
+        logger.info(f"Admin {admin.email} logged in from {ip_address}")
         return admin.to_dict()
     except Exception as e:
-        print(e)
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e)
@@ -87,9 +97,10 @@ async def login(logdata:AdminLogin, request:Request, response:Response, db:ses=D
 @auths_bp.post('/refresh')
 async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
     try:
-        token = request.cookies.get("access_token")
+        token = request.cookies.get("refresh_token")
         
         if not token:
+            logger.warning("No token on refresh")
             raise HTTPException(
                 status_code=401,
                 detail="Token not found"
@@ -97,15 +108,35 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
             
         payload = decode_token(token)
         if not payload:
+            logger.exception("No payload on refresh")
             raise HTTPException(
                 status_code=400,
                 detail='an error occur'
             )
         admin = db.query(Admin).filter(Admin.id==payload.get("id")).first()
+        if not admin:
+            logger.warning("admin not found")
+            raise HTTPException(
+                status_code=401,
+                detail="Admin not found"
+            )
         
-        payload['exp'] = NOW + timedelta(days=7)
-        
-        new_access_token = create_token(payload)
+        new_access_token = create_token(
+                {
+                    "id": admin.id,
+                    "email": admin.email,
+                    "role": "admin"
+                }
+            )
+
+        new_refresh_token = create_token(
+                {
+                    "id": admin.id,
+                    "email": admin.email,
+                    "role": "admin"
+                },
+                exps=60 * 60 * 24 * 7
+            )
         
         response.set_cookie(
             key="access_token",
@@ -116,26 +147,37 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
             partitioned=True
         )
         
-        # print(admin.to_dict())
+        response.set_cookie(
+            key="refresh_token",
+            value=new_refresh_token,
+            samesite="none",
+            httponly=True,
+            secure=True,
+            partitioned=True
+        )
+        
         return admin.to_dict()
-    except Exception as e:
-        print(e)
+    except HTTPException:
+        raise
+
+    except Exception:
+        logger.exception("Refresh token error")
         raise HTTPException(
-            status_code=400,
-            detail=str(e)
+            status_code=500,
+            detail="Internal server error"
         )
 
 @auths_bp.post("/logout")
 async def logout(response:Response, request:Request):
     try:     
         response.delete_cookie(
-            key="access_token"
+        key="access_token",
+        secure=True,
+        samesite="none"
         )
-        request.cookies.clear()
-        
         return {"detail":"you are logout"}
     except Exception as e:
-        print(e)
+        logger.exception("Something went wrong on refresh")
         raise HTTPException(
             status_code=400,
             detail=str(e)

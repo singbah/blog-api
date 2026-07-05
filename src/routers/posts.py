@@ -6,10 +6,7 @@ from datetime import datetime
 
 from src.models import Posts, Tags
 from src.database import get_db
-from config import (get_user_agent, 
-                    MAX_LENGTH, ALLOW_EXTENSTION,
-                    decode_token, UPLOAD_FOLDER, create_slug
-                    )
+from config import (get_user_agent, MAX_LENGTH, ALLOW_EXTENSTION, decode_token, create_slug, logger)
 from config.utilities import upload_to_r2, delete_file_from_r2
 
 posts_blue_print = APIRouter(prefix="/posts")
@@ -69,12 +66,12 @@ async def create_post(
     photo: UploadFile = File(...),
     db: session = Depends(get_db),
 ):
-    filename = None
 
     try:
         payload = decode_token(request.cookies.get("access_token"))
 
         if not payload or payload.get("role") != "admin":
+            logger.exception(f"unauthorized attempt on route {create_post.__name__}")
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Unauthorized"
@@ -83,12 +80,14 @@ async def create_post(
         slug = create_slug(title)
 
         if db.query(Posts).filter_by(slug=slug).first():
+            logger.exception("Cost Already exist")
             raise HTTPException(
-                status_code=400,
+                status_code=status.HTTP_409_CONFLICT,
                 detail="A post with this title already exists."
             )
 
         if photo.content_type not in ALLOW_EXTENSTION:
+            logger.exception("file not valided")
             raise HTTPException(
                 status_code=415,
                 detail="Unsupported image type."
@@ -135,6 +134,7 @@ async def create_post(
             ),
             status="published" if published_time == "publish" else "draft",
             tags=tag_objects,
+            author="John P. Singbah"
         )
 
         db.add(post)
@@ -147,23 +147,26 @@ async def create_post(
             "slug": post.slug,
         }
 
+    
     except HTTPException:
         db.rollback()
+        logger.exception("Fail to post")
+        if file_result:
+            try:
+                delete_file_from_r2(file_result["key"])
+            except Exception as e:
+                print(f"Failed to delete uploaded file: {e}")
         raise
 
     except Exception as e:
         db.rollback()
-        print(e)
-        if filename:
+        logger.exception("Fail to post")
+        if file_result:
             try:
-                os.remove(
-                    os.path.join(
-                        UPLOAD_FOLDER, + "posts_media" + filename
-                    )
-                )
-            except OSError:
-                pass
-
+                delete_file_from_r2(file_result["key"])
+            except Exception as delete_error:
+                print(f"Failed to delete uploaded file: {delete_error}")
+        print(e)
         raise HTTPException(
             status_code=500,
             detail=str(e)
@@ -175,6 +178,7 @@ async def edit_post(edit_data:dict, request:Request, db:session=Depends(get_db))
     try:
         payload = decode_token(request.cookies.get("access_token"))
         if not payload:
+            logger.exception(f"unauthorized attenpt on route {edit_post.__name__}")
             raise HTTPException(
                 status_code=401,
                 detail='action not allowed'
@@ -183,6 +187,7 @@ async def edit_post(edit_data:dict, request:Request, db:session=Depends(get_db))
         blog = db.query(Posts).filter(Posts.id==edit_data.get("id")).first()
         
         if not blog:
+            logger.exception("Blog post not found")
             raise HTTPException(
                 status_code=404,
                 detail="Blog/Post not found"
@@ -190,10 +195,15 @@ async def edit_post(edit_data:dict, request:Request, db:session=Depends(get_db))
         
         blog.update(edit_data)
         db.commit()
-
+        logger.info(f"Post {blog.title} EDITED")
         return blog.to_dict()
+    except HTTPException:
+        db.rollback()
+        logger.exception("Fail to edit post")
+        
     except Exception as e:
-        print(e)
+        db.rollback()
+        logger.exception("Fail to edit post")
         raise HTTPException(
             status_code=400,
             detail=str(e)
