@@ -75,7 +75,7 @@ async def login(logdata:AdminLogin, request:Request, response:Response, db:ses=D
             secure=True, 
             samesite='none',
             httponly=True,
-            partitioned=True
+            # partitioned=True
         )
         # REFRESH TOKEN
         response.set_cookie(
@@ -84,7 +84,7 @@ async def login(logdata:AdminLogin, request:Request, response:Response, db:ses=D
             secure=True, 
             samesite='none',
             httponly=True,
-            partitioned=True
+            # partitioned=True
         )
         logger.info(f"Admin {admin.email} logged in from {ip_address}")
         return admin.to_dict()
