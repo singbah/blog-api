@@ -28,8 +28,15 @@ app.add_middleware(
     allow_credentials = True
 )
 
-
 @app.get("/")
+async def root():
+    return {
+        "status": "online",
+        "app": "Easi Tech Lr API",
+        "version": "1.0"
+    }
+
+@app.get("/home")
 async def root(db:session=Depends(get_db), cursor:int=Query(None), limit:int=Query(ge=20, le=20, limit=100)):
     posts = db.query(Posts).order_by(Posts.id.desc()).filter(Posts.published_at<=datetime.now())
     try:
