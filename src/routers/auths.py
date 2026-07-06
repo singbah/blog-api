@@ -144,7 +144,6 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
             samesite="none",
             httponly=True,
             secure=True,
-            partitioned=True
         )
         
         response.set_cookie(
@@ -152,8 +151,7 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
             value=new_refresh_token,
             samesite="none",
             httponly=True,
-            secure=True,
-            partitioned=True
+            secure=True
         )
         
         return admin.to_dict()

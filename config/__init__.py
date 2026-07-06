@@ -143,6 +143,7 @@ def check_password(plain:str, hash_pwd):
             detail=str(e)
         )
 
+# GET USER AGENT
 def get_user_agent(user_agent_string):
     ua = user_agents.parse(user_agent_string)
     return {
@@ -165,6 +166,7 @@ def get_user_agent(user_agent_string):
         "is_bot": ua.is_bot,
     }
 
+# GENERATE SLUG
 def create_slug(title:str):
     if not title:
         return "untitled"
