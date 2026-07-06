@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, HTTPException, status, Query
+from fastapi import FastAPI, Depends, HTTPException, status, Query, Response
 from fastapi.middleware.cors import CORSMiddleware
 from src.database import Base, engine
 from sqlalchemy.orm import Session as session
@@ -56,6 +56,55 @@ async def home(db:session=Depends(get_db), cursor:int=Query(None), limit:int=Que
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e)
         )
-        
+
+# SITE MAP ENDPOINT
+@app.get("/sitemap.xml")
+def get_sitemap(db: session = Depends(get_db)):
+    base_url = "https://www.easitechlr.com"
+
+    static_pages = [
+        "",
+        "/blog",
+        "/about",
+        "/contact",
+    ]
+
+    xml_items = ""
+
+    for page in static_pages:
+        xml_items += f"""
+        <url>
+            <loc>{base_url}{page}</loc>
+        </url>
+        """
+
+    posts = (
+        db.query(Posts)
+        .filter(Posts.status == "published")
+        .all()
+    )
+
+    for post in posts:
+        lastmod = (
+            post.updated_at.date().isoformat()
+            if post.updated_at
+            else post.created_at.date().isoformat()
+        )
+
+        xml_items += f"""
+        <url>
+            <loc>{base_url}/{post.slug}</loc>
+            <lastmod>{lastmod}</lastmod>
+        </url>
+        """
+
+    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {xml_items}
+    </urlset>"""
+
+    return Response(content=xml, media_type="application/xml")  
+
+ 
 for bp in all_blue_prints:
     app.include_router(bp)
