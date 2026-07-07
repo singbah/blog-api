@@ -128,14 +128,6 @@ def robots():
         Sitemap: https://www.easitechlr.com/sitemap.xml
         """
 
-
-@app.get("/smtp-test")
-def smtp_test():
-    try:
-        socket.create_connection(("smtp.gmail.com", 587), timeout=10)
-        return {"detail": "SMTP reachable"}
-    except Exception as e:
-        return {"error": str(e)}
     
 for bp in all_blue_prints:
     app.include_router(bp)

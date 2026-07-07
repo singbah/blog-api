@@ -1,6 +1,5 @@
 from fastapi import HTTPException, status, Depends
 from sqlalchemy.orm import Session as ses
-import re, os
 import resend
 from datetime import datetime, timedelta
 from jose import jwt, ExpiredSignatureError
@@ -8,13 +7,9 @@ from passlib.context import CryptContext
 from dotenv import load_dotenv
 import user_agents
 from uuid import uuid4 as uid
-import re, unicodedata
-import logging
-
+import re, unicodedata, re, os, logging
 from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
-
-
 
 load_dotenv()
 

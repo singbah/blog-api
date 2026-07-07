@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Request, Response, HTTPException, status, Depends, Query
+from fastapi.responses import HTMLResponse
 from config import decode_token, send_email, logger
 from src.database import get_db
 from src.models import *
@@ -58,6 +59,8 @@ async def get_analytics(request:Request, db:ses=Depends(get_db)):
         posts = db.query(Posts).order_by(Posts.created_at.desc()).limit(7)
         settings = db.query(Setting).all()
         
+        
+        
         info = {
             "contacts": [contact.to_dict() for contact in contacts],
             "newsletter": [newsletter.to_dict() for newsletter in newsletter],
@@ -68,7 +71,8 @@ async def get_analytics(request:Request, db:ses=Depends(get_db)):
             "posts_count": posts.count(),
             "tags_count": tags.count() | 0,
             "contacts_count": contacts.count(),
-            "newsletters_count": newsletter.count()
+            "newsletters_count": newsletter.count(),
+            "views": sum([post.views for post in posts ])
         }
         logger.info("get analytics request succeded.")
         return info
@@ -237,4 +241,78 @@ async def send_newsletter_email(user:dict, request:Request, db:ses=Depends(get_d
         logger.exception(f"Sending Email Failed")
         raise HTTPException(
             status_code=500
+        )
+
+@admin_bp.delete("/unsubscribe")
+async def unsubscribe(subscriber_id:int, request:Request, db:ses=Depends(get_db)):
+    # user_agent_str =
+    try:
+        token = request.cookies.get("access_token")
+        if not token:
+            logger.warning("unauthorized attempt")
+            raise HTTPException(
+                status_code=401,
+                detail="unauthorized attempt"
+            )
+
+        payload = decode_token(token)
+        if not payload or payload.get("role") != "admin":
+            logger.warning("user not authorized")
+            raise HTTPException(status_code=401)
+        
+        unsubscriber = db.query(NewsLetter).filter(NewsLetter.id == subscriber_id).first()
+        if not unsubscriber:
+            logger.warning(unsubscriber)
+            raise HTTPException(
+                status_code=404,
+                detail="user not found"
+            )
+        
+        unsubscriber.status = "unsubscribed"
+        logger.warning(f"admin {payload.get("email")} deleted {unsubscriber.email}")
+        db.commit()
+        resp = """"Unsubscribed, If you would like to received email on our products and service\nclick https//www.easitechlr.com/contact"""
+        return {"detail":resp}
+    except HTTPException:
+        logger.exception("Error occur")
+        raise HTTPException(
+            status_code=400,
+            detail="Sorry somethong went wrong"
+        )
+        
+@admin_bp.delete("/contact")
+async def delete_contact(contact_id:int, request:Request, db:ses=Depends(get_db)):
+    # user_agent_str =
+    try:
+        token = request.cookies.get("access_token")
+        if not token:
+            logger.warning("unauthorized attempt")
+            raise HTTPException(
+                status_code=401,
+                detail="unauthorized attempt"
+            )
+
+        payload = decode_token(token)
+        if not payload or payload.get("role") != "admin":
+            logger.warning("user not authorized")
+            raise HTTPException(status_code=401)
+        
+        contact_user = db.query(ContactMessage).filter(ContactMessage.id == contact_id).first()
+        if not contact_user:
+            logger.warning(contact_user)
+            raise HTTPException(
+                status_code=404,
+                detail="user not found"
+            )
+        
+        db.delete(contact_user)
+        db.commit()
+
+        logger.warning(f"admin {payload.get("email")} deleted {contact_user.email}")
+        return {"detail":"Contact deleted"}
+    except HTTPException:
+        logger.exception("Error occur")
+        raise HTTPException(
+            status_code=400,
+            detail="Sorry somethong went wrong"
         )
