@@ -1,6 +1,7 @@
 from fastapi import HTTPException, status, Depends
 from sqlalchemy.orm import Session as ses
 import re, os
+import resend
 from datetime import datetime, timedelta
 from jose import jwt, ExpiredSignatureError
 from passlib.context import CryptContext
@@ -12,10 +13,6 @@ import logging
 
 from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
-from fastapi_mail import (
-    FastMail, MessageSchema,
-    MessageType, ConnectionConfig,
-)
 
 
 
@@ -59,24 +56,7 @@ env = Environment(
     loader=FileSystemLoader(template_dir)
 )
 
-conf = ConnectionConfig(
-    MAIL_USERNAME=str(os.getenv("MAIL_USERNAME")),
-    MAIL_PASSWORD=str(os.getenv("MAIL_PASSWORD")),
-    MAIL_FROM=str(os.getenv("MAIL_FROM")),
-    MAIL_PORT=587,
-    MAIL_SERVER=str(os.getenv("MAIL_SERVER")),
-    MAIL_STARTTLS=True,
-    MAIL_SSL_TLS=False,
-    USE_CREDENTIALS=True,
-)
-
-
-template_dir = Path(__file__).parent.parent / "templates" / "emails"
-
-env = Environment(
-    loader=FileSystemLoader(template_dir)
-)
-
+resend.api_key = os.getenv("RESEND_EMAIL_API_KEY")
 
 async def send_email(
     recipients: list[str],
@@ -84,20 +64,17 @@ async def send_email(
     template_name: str,
     context: dict,
 ):
+
     template = env.get_template(template_name)
 
     html = template.render(**context)
 
-    message = MessageSchema(
-        subject=subject,
-        recipients=recipients,
-        body=html,
-        subtype=MessageType.html,
-    )
-
-    fm = FastMail(conf)
-
-    await fm.send_message(message)
+    resend.Emails.send({
+        "from": "Easi Tech Lr <onboarding@resend.dev>",
+        "to": recipients,
+        "subject": subject,
+        "html": html,
+    })
 
 # CREATE TOKEN
 def create_token(user_data:dict, exps=60*60*5):
