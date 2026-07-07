@@ -71,6 +71,7 @@ def get_sitemap(db: session = Depends(get_db)):
         "/blog",
         "/about",
         "/contact",
+        "/policy"
     ]
 
     xml_items = ""
@@ -126,6 +127,7 @@ def robots():
         Disallow: /api/auth
 
         Sitemap: https://www.easitechlr.com/sitemap.xml
+        https://www.easitechlr.com/policy
         """
 
     
