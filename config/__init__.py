@@ -70,7 +70,7 @@ async def send_email(
     html = template.render(**context)
 
     resend.Emails.send({
-        "from": "Easi Tech Lr <support@resend.dev>",
+        "from": "Easi Tech Lr support@easitech.email",
         "to": recipients,
         "subject": subject,
         "html": html,
