@@ -132,7 +132,7 @@ async def create_post(
                 published_at,
                 "%Y-%m-%d"
             ),
-            status="published" if published_time == "publish" else "draft",
+            status=True if published_time == "publish" else False,
             tags=tag_objects,
             author="John P. Singbah"
         )
