@@ -1,8 +1,9 @@
-"""initial migration
+"""alter posts status to bool constraint instead;
 
-Revision ID: 887a47760e38
-Revises: 
-Create Date: 2026-07-08 04:47:22.458852
+
+Revision ID: 92221bb3f5d4
+Revises: 22b5d87f2012
+Create Date: 2026-07-08 05:43:24.071541
 
 """
 
@@ -12,8 +13,8 @@ from alembic import op
 import sqlalchemy as sa
 
 
-revision: str = '887a47760e38'
-down_revision: Union[str, Sequence[str], None] = None
+revision: str = '92221bb3f5d4'
+down_revision: Union[str, Sequence[str], None] = '22b5d87f2012'
 branch_labels = None
 depends_on = None
 
@@ -35,10 +36,6 @@ def upgrade() -> None:
                existing_type=postgresql.TIMESTAMP(),
                nullable=False,
                existing_server_default=sa.text('now()'))
-    op.alter_column('blocked_ip_addresses', 'phone',
-               existing_type=sa.VARCHAR(length=20),
-               type_=sa.Integer(),
-               existing_nullable=False)
     op.alter_column('blocked_ip_addresses', 'created_at',
                existing_type=postgresql.TIMESTAMP(),
                type_=sa.DateTime(timezone=True),
@@ -94,6 +91,7 @@ def upgrade() -> None:
                nullable=False)
     op.alter_column('posts', 'status',
                existing_type=sa.VARCHAR(length=50),
+               type_=sa.Boolean(),
                nullable=False,
                existing_server_default=sa.text("'draft'::character varying"))
     op.alter_column('posts', 'views',
@@ -196,7 +194,8 @@ def downgrade() -> None:
                nullable=True,
                existing_server_default=sa.text('0'))
     op.alter_column('posts', 'status',
-               existing_type=sa.VARCHAR(length=50),
+               existing_type=sa.Boolean(),
+               type_=sa.VARCHAR(length=50),
                nullable=True,
                existing_server_default=sa.text("'draft'::character varying"))
     op.alter_column('posts', 'featured_image',
@@ -251,10 +250,6 @@ def downgrade() -> None:
     op.alter_column('blocked_ip_addresses', 'created_at',
                existing_type=sa.DateTime(timezone=True),
                type_=postgresql.TIMESTAMP(),
-               existing_nullable=False)
-    op.alter_column('blocked_ip_addresses', 'phone',
-               existing_type=sa.Integer(),
-               type_=sa.VARCHAR(length=20),
                existing_nullable=False)
     op.alter_column('admins', 'updated_at',
                existing_type=postgresql.TIMESTAMP(),

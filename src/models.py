@@ -22,7 +22,7 @@ class BlockIPAddresses(Base, Mixin):
     __tablename__ = 'blocked_ip_addresses'
     
     id:Mapped[int] = mapped_column(primary_key=True)
-    phone:Mapped[int] = mapped_column(nullable=False)
+    phone:Mapped[str] = mapped_column(nullable=False)
     ip_address:Mapped[str] = mapped_column(nullable=False)
     user_agent:Mapped[str] = mapped_column(nullable=False)
     end_point:Mapped[str] = mapped_column(nullable=False)
@@ -73,7 +73,7 @@ class Posts(Base, Mixin):
     author:Mapped[str]
     featured_image:Mapped[str]
     file_key:Mapped[str] = mapped_column(nullable=True)
-    status:Mapped[str] = mapped_column(default='draft')
+    status:Mapped[bool] = mapped_column(default=False)
     views:Mapped[int] = mapped_column(default=0)
     tags:Mapped[list['Tags']]=relationship(secondary=post_tags, back_populates='posts')
     created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
