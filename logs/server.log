@@ -37,3 +37,6 @@ fastapi.exceptions.HTTPException: 401: You are not authorized to access this res
 2026-07-08 06:14:23,819 | INFO | get analytics request succeded.
 2026-07-08 06:15:22,185 | INFO | get analytics request succeded.
 2026-07-08 06:15:22,216 | INFO | get analytics request succeded.
+2026-07-08 07:27:26,056 | INFO | Admin singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-08 07:27:26,411 | INFO | get analytics request succeded.
+2026-07-08 07:27:26,641 | INFO | get analytics request succeded.

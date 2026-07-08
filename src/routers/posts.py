@@ -128,6 +128,8 @@ async def create_post(
             slug=slug,
             featured_image=file_url,
             file_key=file_key,
+            # file_key="file_key",
+            # featured_image="photo.png",
             published_at=datetime.strptime(
                 published_at,
                 "%Y-%m-%d"
@@ -141,10 +143,10 @@ async def create_post(
         db.commit()
         db.refresh(post)
         
-        background_tasks.add_task(
-            send_newsletter,
-            post.id
-        )
+        # background_tasks.add_task(
+        #     send_newsletter,
+        #     post.id
+        # )
         
 
         return {
