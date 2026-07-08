@@ -23,6 +23,7 @@ s3 = boto3.client(
     region_name="auto",
 )
 
+    
 
 def upload_to_r2(file, folder="posts"):
     """

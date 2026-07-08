@@ -1,11 +1,10 @@
-from sqlalchemy.orm import DeclarativeBase, sessionmaker, Session, mapped_column, Mapped
-from sqlalchemy import create_engine, inspect, Table, Column, Integer, ForeignKey
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
+from sqlalchemy import create_engine, inspect, Table, Column, ForeignKey
 from decimal import Decimal
 import uuid
 from dotenv import load_dotenv
 from datetime import datetime, date
 import os
-from fastapi import Depends
 
 load_dotenv()
 

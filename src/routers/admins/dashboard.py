@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Request, Response, HTTPException, status, Depends, Query
-from fastapi.responses import HTMLResponse
-from config import decode_token, send_email, logger
+from config import decode_token, logger
 from src.database import get_db
 from src.models import *
 from sqlalchemy.orm import Session as ses
@@ -161,86 +160,6 @@ async def get_all_newsletters(request:Request, cursor:int=Query(None), limit:int
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, 
             detail=str(e)
-        )
-
-# SEND NEWSLETTER/CONTACT EMAIL
-@admin_bp.post("/send_newsletter")
-async def send_newsletter_email(user:dict, request:Request, db:ses=Depends(get_db)):
-    try:
-        token = request.cookies.get("access_token")
-        ip_address = request.client.host
-        
-        if not token:
-            error_message = f"IP ADDRESS {ip_address} | Token Failed {send_newsletter_email.__name__}"
-            logger.warning(error_message)
-            raise HTTPException(
-                status_code=401,
-                detail="You are not authorized to access this source"
-            )
-        payload = decode_token(token)
-        if not payload or payload.get("role") != 'admin':
-            error_message = f"IP ADDRESS {ip_address} | Payload Not Found {send_newsletter_email.__name__}"
-            logger.warning(error_message)
-            raise HTTPException(
-                status_code=401,
-                detail="You are not authorized to access this source")
-            
-        
-        user_type = user_type = (user.get("type") or "").lower()
-
-        if not user_type:
-            logger.warning("user type error")
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="user type error"
-            )
-            
-        if user_type == "newsletter":
-            db_user = db.query(NewsLetter).filter(NewsLetter.email==user.get("email")).first()
-            db_user.last_open = datetime.now(timezone.utc)
-            await send_email(
-                recipients=[user.get("email")],
-                subject=user.get("subject"),
-                template_name="newsletter.html",
-                context={
-                    "name":user.get("name"),
-                    "website":"easitechlr.com/blog",
-                    "body":user.get("message")
-                }
-            )
-        else:
-            db_user = db.query(ContactMessage).filter(ContactMessage.email==user.get("email")).first()
-            if not db_user:
-                logger.warning(f"user with email {user.get("email")} not found")
-                raise HTTPException(
-                    status_code=status.HTTP_404_NOT_FOUND,
-                    detail="User not found!!"
-                )
-            db_user.status = "Emailed"
-            await send_email(
-                recipients=[user.get("email")],
-                subject=user.get("subject"),
-                template_name="contact_email.html",
-                context={
-                    "name":user.get("name"),
-                    "website":"easitechlr.com/contact",
-                    "body":user.get("message")
-                }
-            )
-            
-        db.commit()
-        logger.info(f"Admin {payload.get("email")} emailed {user.get("name")}")
-        return {"detail":"Email Send"}
-     
-    except HTTPException:
-        db.rollback()
-        logger.warning("DB error occur")
-        raise
-     
-    except HTTPException:
-        logger.exception(f"Sending Email Failed")
-        raise HTTPException(
-            status_code=500
         )
 
 @admin_bp.delete("/unsubscribe")

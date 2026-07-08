@@ -36,8 +36,17 @@ class Setting(Base, Mixin):
     type:Mapped[str] = mapped_column(default='text')
     created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
     updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
-   
 
+class NewsletterCampign(Base, Mixin):
+    __tablename__ = "newsletter_campign"
+    
+    id:Mapped[int] = mapped_column(primary_key=True)
+    post_id:Mapped[int] = mapped_column(nullable=False)
+    status:Mapped[str] = mapped_column(default="newsletter")
+    sent:Mapped[bool] = mapped_column(nullable=False)
+    faid:Mapped[bool] = mapped_column(nullable=False)
+    created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    
 class ContactMessage(Base, Mixin):
     __tablename__= "contact_messages"
     id:Mapped[int] = mapped_column(primary_key=True)
@@ -97,7 +106,6 @@ class Tags(Base, Mixin):
         DateTime(timezone=True),
         default=datetime.now(timezone.utc)
     )
-
 
 class SiteVisit(Base):
     __tablename__ = "site_visits"

@@ -1,13 +1,12 @@
-from fastapi import APIRouter, HTTPException, Request, status, Depends, UploadFile, File, Form, Query
-from fastapi.responses import FileResponse
+from fastapi import APIRouter, HTTPException, Request, status, Depends, UploadFile, File, Form, Query, BackgroundTasks
 from sqlalchemy.orm import Session as session
-import os
 from datetime import datetime
 
 from src.models import Posts, Tags
 from src.database import get_db
 from config import (get_user_agent, MAX_LENGTH, ALLOW_EXTENSTION, decode_token, create_slug, logger)
 from config.utilities import upload_to_r2, delete_file_from_r2
+from src.routers.services.newsletter import send_newsletter
 
 posts_blue_print = APIRouter(prefix="/posts")
 
@@ -57,6 +56,7 @@ async def get_tags(request:Request, db:session=Depends(get_db)):
 @posts_blue_print.post("/create_post")
 async def create_post(
     request: Request,
+    background_tasks:BackgroundTasks,
     title: str = Form(...),
     excert: str = Form(...),
     content: str = Form(...),
@@ -140,6 +140,12 @@ async def create_post(
         db.add(post)
         db.commit()
         db.refresh(post)
+        
+        background_tasks.add_task(
+            send_newsletter,
+            post.id
+        )
+        
 
         return {
             "detail": "Post created successfully.",

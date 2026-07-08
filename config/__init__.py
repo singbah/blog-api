@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 import user_agents
 from uuid import uuid4 as uid
 import re, unicodedata, re, os, logging
-from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 
 load_dotenv()
@@ -45,31 +44,6 @@ if not logger.handlers:
     logger.addHandler(file_handler)
 
 
-template_dir = Path(__file__).parent.parent / "templates" / "emails"
-
-env = Environment(
-    loader=FileSystemLoader(template_dir)
-)
-
-resend.api_key = os.getenv("RESEND_EMAIL_API_KEY")
-
-async def send_email(
-    recipients: list[str],
-    subject: str,
-    template_name: str,
-    context: dict,
-):
-
-    template = env.get_template(template_name)
-
-    html = template.render(**context)
-
-    resend.Emails.send({
-        "from": "Easi Tech Lr support@easitech.email",
-        "to": recipients,
-        "subject": subject,
-        "html": html,
-    })
 
 # CREATE TOKEN
 def create_token(user_data:dict, exps=60*60*5):
