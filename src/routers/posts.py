@@ -218,7 +218,7 @@ async def edit_post(edit_data:dict, request:Request, db:session=Depends(get_db))
 @posts_blue_print.get("/post/{postSlug}")
 async def get_post(postSlug:str, request:Request, db:session=Depends(get_db)):
     try:
-        blog = db.query(Posts).filter(Posts.slug==postSlug).first()
+        blog = db.query(Posts).filter(Posts.slug==postSlug, Posts.status == "true").first()
         if not blog:
             raise HTTPException(
                 status_code=404,

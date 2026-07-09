@@ -56,6 +56,8 @@ async def get_analytics(request:Request, db:ses=Depends(get_db)):
         newsletter = db.query(NewsLetter).order_by(NewsLetter.created_at.desc()).limit(7)
         tags = db.query(Tags).order_by(Tags.created_at.desc()).limit(7)
         posts = db.query(Posts).order_by(Posts.created_at.desc()).limit(7)
+        comments = db.query(Comments).order_by(Comments.created_at.desc()).limit(7)
+        visitors = db.query(SiteVisit).order_by(SiteVisit.created_at.desc()).limit(7)
         settings = db.query(Setting).all()
         
         
@@ -66,12 +68,16 @@ async def get_analytics(request:Request, db:ses=Depends(get_db)):
             "tags": [tag.to_dict() for tag in tags],
             "posts": [post.to_dict() for post in posts],
             "settings": [setting.to_dict() for setting in settings],
+            "comments": [comment.to_dict() for comment in comments],
+            "visitors": [visitor.to_dict() for visitor in visitors],
             
             "posts_count": posts.count(),
+            "comments_count": comments.count(),
             "tags_count": tags.count() | 0,
             "contacts_count": contacts.count(),
             "newsletters_count": newsletter.count(),
-            "views": sum([post.views for post in posts ])
+            "views": sum([post.views for post in posts ]),
+            "visitor_count":visitors.count()
         }
         logger.info("get analytics request succeded.")
         return info
