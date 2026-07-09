@@ -73,13 +73,23 @@ class Posts(Base, Mixin):
     author:Mapped[str]
     featured_image:Mapped[str]
     file_key:Mapped[str] = mapped_column(nullable=True)
-    status:Mapped[bool] = mapped_column(default=False)
+    status:Mapped[bool] = mapped_column(default=True)
     views:Mapped[int] = mapped_column(default=0)
     tags:Mapped[list['Tags']]=relationship(secondary=post_tags, back_populates='posts')
     created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
     updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
     published_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
-     
+
+class Comments(Base, Mixin):
+    __tablename__="comments"
+    
+    id:Mapped[int] = mapped_column(primary_key=True)
+    post_id:Mapped[int] = mapped_column(nullable=False)
+    comment:Mapped[str] = mapped_column(nullable=False)
+    user_email:Mapped[str] = mapped_column(nullable=True, default=None)
+    created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+
 class NewsLetter(Base, Mixin):
     __tablename__ = 'news_letters'
     

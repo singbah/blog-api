@@ -128,8 +128,6 @@ async def create_post(
             slug=slug,
             featured_image=file_url,
             file_key=file_key,
-            # file_key="file_key",
-            # featured_image="photo.png",
             published_at=datetime.strptime(
                 published_at,
                 "%Y-%m-%d"
@@ -143,10 +141,10 @@ async def create_post(
         db.commit()
         db.refresh(post)
         
-        # background_tasks.add_task(
-        #     send_newsletter,
-        #     post.id
-        # )
+        background_tasks.add_task(
+            send_newsletter,
+            post.id
+        )
         
 
         return {
@@ -174,7 +172,6 @@ async def create_post(
                 delete_file_from_r2(file_result["key"])
             except Exception as delete_error:
                 print(f"Failed to delete uploaded file: {delete_error}")
-        print(e)
         raise HTTPException(
             status_code=500,
             detail=str(e)
@@ -203,7 +200,7 @@ async def edit_post(edit_data:dict, request:Request, db:session=Depends(get_db))
         
         blog.update(edit_data)
         db.commit()
-        logger.info(f"Post {blog.title} EDITED")
+        logger.info(f"Admin: {payload.get("email")} | edited post: {blog.title}")
         return blog.to_dict()
     except HTTPException:
         db.rollback()
@@ -228,7 +225,6 @@ async def get_post(postSlug:str, request:Request, db:session=Depends(get_db)):
                 detail="Blog Not Found"
             )
         post_tags = [p.to_dict() for p in blog.tags]
-        # print(post_tags)
         return blog.to_dict()
     except Exception as e:
         print(e)

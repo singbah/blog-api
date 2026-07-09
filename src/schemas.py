@@ -25,5 +25,9 @@ class AdminLogin(BaseModel):
     password:str
     phone:str |None
 
+class CreateComment(BaseModel):
+    post_id:int
+    comment:str
+
 def as_form(title, excert, content) ->CreatePost:
     return CreatePost(title=title, content=content, excert=excert)

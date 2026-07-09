@@ -1,42 +1,32 @@
-2026-07-08 06:10:57,218 | WARNING | Fail Access get_analytics | IP ADDRESS 127.0.0.1
-2026-07-08 06:10:57,228 | ERROR | An error occur at get_analytics
+2026-07-09 15:42:48,498 | INFO | get analytics request succeded.
+2026-07-09 15:42:48,566 | INFO | get analytics request succeded.
+2026-07-09 15:42:54,537 | ERROR | bad error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 42, in get_analytics
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
-2026-07-08 06:10:57,267 | WARNING | Fail Access get_analytics | IP ADDRESS 127.0.0.1
-2026-07-08 06:10:57,267 | ERROR | An error occur at get_analytics
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 247, in pulish_post
+    payload = decode_token(payload)
+                           ^^^^^^^
+UnboundLocalError: cannot access local variable 'payload' where it is not associated with a value
+2026-07-09 15:44:18,867 | ERROR | bad error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 42, in get_analytics
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
-2026-07-08 06:10:57,278 | WARNING | No token on refresh
-2026-07-08 06:10:57,278 | WARNING | No token on refresh
-2026-07-08 06:11:05,982 | INFO | Admin singbahjohn@gmail.com logged in from 127.0.0.1
-2026-07-08 06:11:10,385 | INFO | get analytics request succeded.
-2026-07-08 06:11:10,630 | INFO | get analytics request succeded.
-2026-07-08 06:11:28,295 | INFO | get analytics request succeded.
-2026-07-08 06:11:28,343 | INFO | get analytics request succeded.
-2026-07-08 06:11:54,813 | INFO | get analytics request succeded.
-2026-07-08 06:11:54,861 | INFO | get analytics request succeded.
-2026-07-08 06:12:07,067 | INFO | get analytics request succeded.
-2026-07-08 06:12:07,094 | INFO | get analytics request succeded.
-2026-07-08 06:12:17,181 | INFO | get analytics request succeded.
-2026-07-08 06:12:17,224 | INFO | get analytics request succeded.
-2026-07-08 06:13:13,376 | INFO | get analytics request succeded.
-2026-07-08 06:13:13,427 | INFO | get analytics request succeded.
-2026-07-08 06:13:40,650 | INFO | get analytics request succeded.
-2026-07-08 06:13:40,696 | INFO | get analytics request succeded.
-2026-07-08 06:14:12,458 | INFO | get analytics request succeded.
-2026-07-08 06:14:12,496 | INFO | get analytics request succeded.
-2026-07-08 06:14:23,785 | INFO | get analytics request succeded.
-2026-07-08 06:14:23,819 | INFO | get analytics request succeded.
-2026-07-08 06:15:22,185 | INFO | get analytics request succeded.
-2026-07-08 06:15:22,216 | INFO | get analytics request succeded.
-2026-07-08 07:27:26,056 | INFO | Admin singbahjohn@gmail.com logged in from 127.0.0.1
-2026-07-08 07:27:26,411 | INFO | get analytics request succeded.
-2026-07-08 07:27:26,641 | INFO | get analytics request succeded.
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 247, in pulish_post
+    payload = decode_token(payload)
+                           ^^^^^^^
+UnboundLocalError: cannot access local variable 'payload' where it is not associated with a value
+2026-07-09 15:45:07,200 | INFO | get analytics request succeded.
+2026-07-09 15:45:21,056 | INFO | get analytics request succeded.
+2026-07-09 15:45:21,114 | INFO | get analytics request succeded.
+2026-07-09 15:46:33,502 | INFO | get analytics request succeded.
+2026-07-09 15:46:33,539 | INFO | get analytics request succeded.
+2026-07-09 15:46:36,538 | INFO | get analytics request succeded.
+2026-07-09 15:46:43,737 | INFO | get analytics request succeded.
+2026-07-09 15:47:36,929 | INFO | get analytics request succeded.
+2026-07-09 15:47:39,919 | INFO | get analytics request succeded.
+2026-07-09 15:47:44,818 | WARNING | admin singbahjohn@gmail.com deleted moses@gmail.com
+2026-07-09 15:47:44,857 | INFO | get analytics request succeded.
+2026-07-09 15:47:51,138 | WARNING | admin singbahjohn@gmail.com deleted jimmyjames@gmail.com
+2026-07-09 15:47:51,182 | INFO | get analytics request succeded.
+2026-07-09 15:47:55,949 | WARNING | admin singbahjohn@gmail.com deleted singbahjohn@gmail.com
+2026-07-09 15:47:56,013 | INFO | get analytics request succeded.
+2026-07-09 15:48:07,048 | INFO | get analytics request succeded.
+2026-07-09 15:48:55,499 | INFO | get analytics request succeded.
+2026-07-09 15:48:55,538 | INFO | get analytics request succeded.

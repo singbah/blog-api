@@ -1,8 +1,9 @@
 from fastapi import APIRouter, Request, Response, HTTPException, status, Depends
 from datetime import datetime, timedelta
+import time
 from sqlalchemy.orm import Session as ses
 
-from src.models import Admin, BlockIPAddresses
+from src.models import Admin, BlockIPAddresses, SiteVisit
 from src.database import get_db
 from config import logger
 from config import (get_user_agent, create_token, decode_token, NOW, 
@@ -11,6 +12,7 @@ from src.schemas import AdminLogin
 
 auths_bp = APIRouter(prefix="/auths")
 
+attempt = 0
 @auths_bp.post("/login")
 async def login(logdata:AdminLogin, request:Request, response:Response, db:ses=Depends(get_db)):
     try:
@@ -19,7 +21,8 @@ async def login(logdata:AdminLogin, request:Request, response:Response, db:ses=D
         ip_address = request.client.host
         
         if db.query(BlockIPAddresses).filter(BlockIPAddresses.phone==phone).first():
-            logger.warning(f"Invalid login attempt | Phone: {phone} | IP: {ip_address}")
+            logger.warning(f"Invalid login attempt | Phone: {phone} | IP: {ip_address} | user-agent: {ua}")
+            
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Unauthorization attempt"
@@ -29,21 +32,22 @@ async def login(logdata:AdminLogin, request:Request, response:Response, db:ses=D
         admin = db.query(Admin).filter(Admin.phone==phone).first()
         
         if not admin:
-            logger.warning(f"Invalid login attempt | Phone: {phone} | IP: {ip_address}")
+            logger.warning(f"Invalid login attempt | Phone: {phone} | IP: {ip_address} | user-agent: {ua}")
+            time.sleep(1)
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Not Authorized"
             )
         
         if admin.account_lock_delay and admin.account_lock_delay > NOW:
-            logger.warning(f"Invalid login attempt | Phone: {phone} | IP: {ip_address}")
+            logger.warning(f"Invalid login attempt | Phone: {phone} | IP: {ip_address} | user-agent: {ua}")
             raise HTTPException(
                 status_code=status.HTTP_423_LOCKED,
                 detail=f"Your account is temporarily lock for {(admin.account_lock_delay - NOW)}"
             )
         
         if not check_password(logdata.password, admin.password):
-            logger.warning(f"Failed login | Phone: {phone} | IP: {ip_address}")
+            logger.warning(f"Failed login | Phone: {phone} | IP: {ip_address} | user-agent: {ua}")
             admin.max_att += 1
             if admin.max_att >= MAX_ATTEMPT:
                 admin.account_lock_delay = ACCOUNT_LOCK_DELAY

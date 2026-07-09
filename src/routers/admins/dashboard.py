@@ -235,3 +235,36 @@ async def delete_contact(contact_id:int, request:Request, db:ses=Depends(get_db)
             status_code=400,
             detail="Sorry somethong went wrong"
         )
+
+@admin_bp.patch("/publish_post")
+async def pulish_post(post_id:int, request:Request, db:ses=Depends(get_db)):
+    try:
+        token = request.cookies.get("access_token")
+        if not token:
+            logger.warning("not token found")
+            raise HTTPException(status_code=401)
+        
+        payload = decode_token(token)
+        if not payload or payload.get("role") != "admin":
+            logger.warning("unauthorized attempt")
+            raise HTTPException(status_code=401, detail="user not allow")
+        
+        post = db.query(Posts).filter(Posts.id==int(post_id)).first()
+        if not post:
+            logger.warning("post not found to published")
+            raise HTTPException(status_code=404, detail="Post ot found to published")
+        
+        if post.status == 'true':
+            post.status = False
+        else:
+            post.status = True
+        
+        db.commit()
+        
+    except HTTPException:
+        db.rollback()   
+        logger.exception("error occur")
+        raise
+    except Exception as e:
+        logger.exception("bad error occur")
+        raise HTTPException(status_code=400, detail=str(e))
