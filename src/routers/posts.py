@@ -224,7 +224,7 @@ async def get_post(postSlug:str, request:Request, db:session=Depends(get_db)):
                 status_code=404,
                 detail="Blog Not Found"
             )
-        post_tags = [p.to_dict() for p in blog.tags]
+        # post_tags = [p.to_dict() for p in blog.tags]
         return blog.to_dict()
     except Exception as e:
         print(e)
