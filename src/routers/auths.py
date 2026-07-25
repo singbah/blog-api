@@ -18,7 +18,9 @@ async def login(logdata:AdminLogin, request:Request, response:Response, db:ses=D
     try:
         phone = logdata.phone
         ua = get_user_agent(request.headers.get("user-agent"))
-        ip_address = request.client.host
+        ip_address = ''
+        if request.client:
+            ip_address = request.client.host
         
         if db.query(BlockIPAddresses).filter(BlockIPAddresses.phone==phone).first():
             logger.warning(f"Invalid login attempt | Phone: {phone} | IP: {ip_address} | user-agent: {ua}")
