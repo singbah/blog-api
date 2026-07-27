@@ -7,6 +7,11 @@ class CreatePost(BaseModel):
     excert:str=Form(...)
     content:str=Form(...)
 
+class CreateUser(BaseModel):
+    name:str
+    phone:str
+    password:str
+    email:EmailStr
 class CreateLead(BaseModel):
     email:str
     name:str
@@ -21,7 +26,7 @@ class CreateInquiries(BaseModel):
     service_type:str
     budget_type:str
 
-class AdminLogin(BaseModel):
+class UserLogin(BaseModel):
     password:str
     phone:str |None
 

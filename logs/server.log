@@ -1,145 +1,1001 @@
-2026-07-09 15:42:48,498 | INFO | get analytics request succeded.
-2026-07-09 15:42:48,566 | INFO | get analytics request succeded.
-2026-07-09 15:42:54,537 | ERROR | bad error occur
+2026-07-26 15:23:45,663 | INFO | vonder None logged in from 127.0.0.1
+2026-07-26 15:23:47,974 | INFO | vonder None logged in from 127.0.0.1
+2026-07-26 15:23:51,047 | INFO | vonder None logged in from 127.0.0.1
+2026-07-26 15:23:53,274 | INFO | vonder None logged in from 127.0.0.1
+2026-07-26 15:24:01,452 | INFO | vonder None logged in from 127.0.0.1
+2026-07-26 15:24:04,560 | INFO | vonder None logged in from 127.0.0.1
+2026-07-26 15:25:58,679 | INFO | vonder None logged in from 127.0.0.1
+2026-07-26 16:27:36,632 | INFO | vonder None logged in from 127.0.0.1
+2026-07-26 21:56:20,875 | ERROR | Token has expired
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 247, in pulish_post
-    payload = decode_token(payload)
-                           ^^^^^^^
-UnboundLocalError: cannot access local variable 'payload' where it is not associated with a value
-2026-07-09 15:44:18,867 | ERROR | bad error occur
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2026-07-26 21:56:20,886 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 247, in pulish_post
-    payload = decode_token(payload)
-                           ^^^^^^^
-UnboundLocalError: cannot access local variable 'payload' where it is not associated with a value
-2026-07-09 15:45:07,200 | INFO | get analytics request succeded.
-2026-07-09 15:45:21,056 | INFO | get analytics request succeded.
-2026-07-09 15:45:21,114 | INFO | get analytics request succeded.
-2026-07-09 15:46:33,502 | INFO | get analytics request succeded.
-2026-07-09 15:46:33,539 | INFO | get analytics request succeded.
-2026-07-09 15:46:36,538 | INFO | get analytics request succeded.
-2026-07-09 15:46:43,737 | INFO | get analytics request succeded.
-2026-07-09 15:47:36,929 | INFO | get analytics request succeded.
-2026-07-09 15:47:39,919 | INFO | get analytics request succeded.
-2026-07-09 15:47:44,818 | WARNING | admin singbahjohn@gmail.com deleted moses@gmail.com
-2026-07-09 15:47:44,857 | INFO | get analytics request succeded.
-2026-07-09 15:47:51,138 | WARNING | admin singbahjohn@gmail.com deleted jimmyjames@gmail.com
-2026-07-09 15:47:51,182 | INFO | get analytics request succeded.
-2026-07-09 15:47:55,949 | WARNING | admin singbahjohn@gmail.com deleted singbahjohn@gmail.com
-2026-07-09 15:47:56,013 | INFO | get analytics request succeded.
-2026-07-09 15:48:07,048 | INFO | get analytics request succeded.
-2026-07-09 15:48:55,499 | INFO | get analytics request succeded.
-2026-07-09 15:48:55,538 | INFO | get analytics request succeded.
-2026-07-09 16:04:14,536 | INFO | get analytics request succeded.
-2026-07-09 16:04:14,551 | INFO | get analytics request succeded.
-2026-07-09 16:04:20,292 | INFO | get analytics request succeded.
-2026-07-09 16:06:08,649 | INFO | get analytics request succeded.
-2026-07-09 16:06:08,685 | INFO | get analytics request succeded.
-2026-07-09 16:14:31,418 | INFO | get analytics request succeded.
-2026-07-09 16:14:31,485 | INFO | get analytics request succeded.
-2026-07-09 16:14:52,139 | INFO | get analytics request succeded.
-2026-07-09 16:14:52,208 | INFO | get analytics request succeded.
-2026-07-09 16:15:37,696 | INFO | get analytics request succeded.
-2026-07-09 16:15:37,742 | INFO | get analytics request succeded.
-2026-07-09 16:16:08,244 | INFO | get analytics request succeded.
-2026-07-09 16:16:08,294 | INFO | get analytics request succeded.
-2026-07-09 16:16:19,138 | INFO | get analytics request succeded.
-2026-07-09 16:16:19,185 | INFO | get analytics request succeded.
-2026-07-09 16:24:56,097 | INFO | get analytics request succeded.
-2026-07-09 16:24:56,129 | INFO | get analytics request succeded.
-2026-07-09 16:24:59,436 | INFO | get analytics request succeded.
-2026-07-09 16:25:02,581 | INFO | get analytics request succeded.
-2026-07-09 16:25:02,673 | INFO | get analytics request succeded.
-2026-07-09 16:25:55,963 | INFO | get analytics request succeded.
-2026-07-09 16:25:56,004 | INFO | get analytics request succeded.
-2026-07-09 16:25:58,283 | INFO | get analytics request succeded.
-2026-07-09 16:25:58,309 | INFO | get analytics request succeded.
-2026-07-09 16:26:01,589 | INFO | get analytics request succeded.
-2026-07-09 16:26:01,615 | INFO | get analytics request succeded.
-2026-07-09 16:26:05,312 | INFO | get analytics request succeded.
-2026-07-09 16:26:33,498 | WARNING | admin singbahjohn@gmail.com deleted singbahjohn@gmail.com
-2026-07-09 16:26:33,536 | INFO | get analytics request succeded.
-2026-07-09 16:26:37,888 | WARNING | admin singbahjohn@gmail.com deleted singbahjohn@gmaol.com
-2026-07-09 16:26:37,941 | INFO | get analytics request succeded.
-2026-07-09 16:26:42,008 | WARNING | admin singbahjohn@gmail.com deleted moses@gmail.com
-2026-07-09 16:26:42,048 | INFO | get analytics request succeded.
-2026-07-09 16:29:20,567 | INFO | get analytics request succeded.
-2026-07-09 16:29:20,614 | INFO | get analytics request succeded.
-2026-07-09 16:29:41,877 | INFO | get analytics request succeded.
-2026-07-09 16:29:41,915 | INFO | get analytics request succeded.
-2026-07-09 16:29:52,919 | INFO | get analytics request succeded.
-2026-07-09 16:29:52,973 | INFO | get analytics request succeded.
-2026-07-09 16:30:30,560 | INFO | get analytics request succeded.
-2026-07-09 16:30:30,612 | INFO | get analytics request succeded.
-2026-07-09 16:30:42,080 | INFO | get analytics request succeded.
-2026-07-09 16:30:42,122 | INFO | get analytics request succeded.
-2026-07-09 16:30:50,588 | INFO | get analytics request succeded.
-2026-07-09 16:30:50,660 | INFO | get analytics request succeded.
-2026-07-09 16:32:19,233 | INFO | get analytics request succeded.
-2026-07-09 16:32:19,289 | INFO | get analytics request succeded.
-2026-07-09 16:32:29,285 | INFO | get analytics request succeded.
-2026-07-09 16:32:29,328 | INFO | get analytics request succeded.
-2026-07-09 16:33:09,935 | INFO | get analytics request succeded.
-2026-07-09 16:33:09,991 | INFO | get analytics request succeded.
-2026-07-09 16:33:33,481 | INFO | get analytics request succeded.
-2026-07-09 16:33:33,517 | INFO | get analytics request succeded.
-2026-07-09 16:33:42,067 | INFO | get analytics request succeded.
-2026-07-09 16:33:42,123 | INFO | get analytics request succeded.
-2026-07-09 16:34:12,555 | INFO | get analytics request succeded.
-2026-07-09 16:34:12,586 | INFO | get analytics request succeded.
-2026-07-09 16:34:17,097 | INFO | get analytics request succeded.
-2026-07-09 16:34:17,155 | INFO | get analytics request succeded.
-2026-07-09 16:38:26,995 | INFO | get analytics request succeded.
-2026-07-09 16:38:27,053 | INFO | get analytics request succeded.
-2026-07-09 16:38:50,532 | INFO | get analytics request succeded.
-2026-07-09 16:38:50,570 | INFO | get analytics request succeded.
-2026-07-09 16:40:13,432 | INFO | get analytics request succeded.
-2026-07-09 16:40:13,471 | INFO | get analytics request succeded.
-2026-07-09 16:41:52,466 | INFO | get analytics request succeded.
-2026-07-09 16:41:52,521 | INFO | get analytics request succeded.
-2026-07-09 16:42:15,257 | INFO | get analytics request succeded.
-2026-07-09 16:42:15,333 | INFO | get analytics request succeded.
-2026-07-09 16:43:10,741 | INFO | get analytics request succeded.
-2026-07-09 16:43:10,777 | INFO | get analytics request succeded.
-2026-07-09 16:43:26,479 | INFO | get analytics request succeded.
-2026-07-09 16:43:26,543 | INFO | get analytics request succeded.
-2026-07-09 16:43:42,178 | INFO | get analytics request succeded.
-2026-07-09 16:43:42,238 | INFO | get analytics request succeded.
-2026-07-09 16:44:40,543 | INFO | get analytics request succeded.
-2026-07-09 16:44:40,580 | INFO | get analytics request succeded.
-2026-07-09 16:45:29,677 | INFO | get analytics request succeded.
-2026-07-09 16:45:29,720 | INFO | get analytics request succeded.
-2026-07-09 16:45:40,341 | INFO | get analytics request succeded.
-2026-07-09 16:45:40,373 | INFO | get analytics request succeded.
-2026-07-09 16:46:34,694 | INFO | get analytics request succeded.
-2026-07-09 16:46:34,725 | INFO | get analytics request succeded.
-2026-07-09 16:47:43,015 | INFO | get analytics request succeded.
-2026-07-09 16:47:43,049 | INFO | get analytics request succeded.
-2026-07-09 16:47:49,191 | INFO | get analytics request succeded.
-2026-07-09 16:47:49,228 | INFO | get analytics request succeded.
-2026-07-09 16:48:10,194 | INFO | get analytics request succeded.
-2026-07-09 16:48:10,276 | INFO | get analytics request succeded.
-2026-07-09 16:48:33,708 | INFO | get analytics request succeded.
-2026-07-09 16:48:33,747 | INFO | get analytics request succeded.
-2026-07-09 16:49:14,358 | INFO | get analytics request succeded.
-2026-07-09 16:49:14,396 | INFO | get analytics request succeded.
-2026-07-09 16:49:58,665 | INFO | get analytics request succeded.
-2026-07-09 16:49:58,702 | INFO | get analytics request succeded.
-2026-07-09 16:50:14,016 | INFO | get analytics request succeded.
-2026-07-09 16:50:14,053 | INFO | get analytics request succeded.
-2026-07-09 16:50:52,329 | INFO | get analytics request succeded.
-2026-07-09 16:50:52,367 | INFO | get analytics request succeded.
-2026-07-09 16:52:13,987 | INFO | get analytics request succeded.
-2026-07-09 16:52:14,033 | INFO | get analytics request succeded.
-2026-07-09 16:52:45,025 | INFO | get analytics request succeded.
-2026-07-09 16:52:45,059 | INFO | get analytics request succeded.
-2026-07-09 16:53:36,583 | INFO | get analytics request succeded.
-2026-07-09 16:53:36,616 | INFO | get analytics request succeded.
-2026-07-09 16:53:58,163 | INFO | get analytics request succeded.
-2026-07-09 16:53:58,212 | INFO | get analytics request succeded.
-2026-07-09 16:54:09,245 | INFO | get analytics request succeded.
-2026-07-09 16:54:09,280 | INFO | get analytics request succeded.
-2026-07-09 16:55:51,870 | INFO | get analytics request succeded.
-2026-07-09 16:55:51,903 | INFO | get analytics request succeded.
-2026-07-09 16:56:47,042 | INFO | get analytics request succeded.
-2026-07-09 16:56:47,088 | INFO | get analytics request succeded.
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+    payload = decode_token(token)
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Token has expired
+2026-07-26 21:56:20,897 | ERROR | Token has expired
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2026-07-26 21:56:20,899 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+    payload = decode_token(token)
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Token has expired
+2026-07-26 21:56:31,961 | ERROR | Token has expired
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2026-07-26 21:56:31,963 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+    payload = decode_token(token)
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Token has expired
+2026-07-26 21:56:31,974 | ERROR | Token has expired
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2026-07-26 21:56:31,977 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+    payload = decode_token(token)
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Token has expired
+2026-07-26 21:56:39,049 | ERROR | Token has expired
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2026-07-26 21:56:39,057 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+    payload = decode_token(token)
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Token has expired
+2026-07-26 21:56:39,082 | ERROR | Token has expired
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2026-07-26 21:56:39,096 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+    payload = decode_token(token)
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Token has expired
+2026-07-26 21:56:42,788 | ERROR | Token has expired
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2026-07-26 21:56:42,791 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+    payload = decode_token(token)
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Token has expired
+2026-07-26 21:56:42,803 | ERROR | Token has expired
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2026-07-26 21:56:42,807 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+    payload = decode_token(token)
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Token has expired
+2026-07-26 21:58:01,025 | ERROR | Token has expired
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2026-07-26 21:58:01,028 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+    payload = decode_token(token)
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Token has expired
+2026-07-26 21:58:01,035 | ERROR | Token has expired
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2026-07-26 21:58:01,039 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+    payload = decode_token(token)
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Token has expired
+2026-07-26 21:58:09,960 | ERROR | Token has expired
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2026-07-26 21:58:09,967 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
+    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+    payload = decode_token(token)
+  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Token has expired
+2026-07-26 21:58:17,581 | INFO | vonder None logged in from 127.0.0.1
+2026-07-26 22:02:40,953 | INFO | vonder None logged in from 127.0.0.1
+2026-07-26 23:53:01,009 | WARNING | This account is log for 86103
+2026-07-26 23:53:03,274 | WARNING | This account is log for 86105
+2026-07-26 23:53:05,543 | WARNING | This account is log for 86108
+2026-07-26 23:58:38,058 | INFO | vonder None logged in from 127.0.0.1
+2026-07-26 23:58:38,210 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-26 23:58:38,210 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-26 23:58:38,217 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-26 23:58:38,217 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:01:23,045 | INFO | vonder None logged in from 127.0.0.1
+2026-07-27 00:01:23,146 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:01:23,146 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:01:23,169 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:01:23,171 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:02:38,450 | INFO | vonder None logged in from 127.0.0.1
+2026-07-27 00:02:38,684 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:02:38,684 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:02:38,686 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:02:38,686 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:03:28,038 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:03:28,039 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:03:28,068 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:03:28,070 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:03:42,523 | WARNING | decoding token
+2026-07-27 00:03:42,523 | ERROR | Error occur her
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 146, in get_all_newsletters
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:03:42,526 | ERROR | unanthorized attempt on get_all_contacts route. IP ADDRESS 127.0.0.1
+NoneType: None
+2026-07-27 00:03:42,527 | ERROR | and error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 106, in get_all_contacts
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:04:21,749 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:04:21,752 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:04:21,801 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:04:21,803 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:05:03,186 | INFO | vonder None logged in from 127.0.0.1
+2026-07-27 00:24:41,475 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 170, in get_user
+    raise HTTPException(status_code=401, detail="User Unavaliable")
+fastapi.exceptions.HTTPException: 401: User Unavaliable
+2026-07-27 00:24:41,485 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 170, in get_user
+    raise HTTPException(status_code=401, detail="User Unavaliable")
+fastapi.exceptions.HTTPException: 401: User Unavaliable
+2026-07-27 00:24:45,845 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 170, in get_user
+    raise HTTPException(status_code=401, detail="User Unavaliable")
+fastapi.exceptions.HTTPException: 401: User Unavaliable
+2026-07-27 00:24:45,872 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 170, in get_user
+    raise HTTPException(status_code=401, detail="User Unavaliable")
+fastapi.exceptions.HTTPException: 401: User Unavaliable
+2026-07-27 00:28:16,348 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 170, in get_user
+    raise HTTPException(status_code=401, detail="User Unavaliable")
+fastapi.exceptions.HTTPException: 401: User Unavaliable
+2026-07-27 00:28:20,917 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-27 00:34:04,575 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-27 00:36:34,357 | INFO | get analytics request succeded.
+2026-07-27 00:36:34,458 | INFO | get analytics request succeded.
+2026-07-27 00:37:07,270 | WARNING | Fail Access get_analytics | IP ADDRESS 127.0.0.1
+2026-07-27 00:37:07,271 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 42, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:37:07,281 | WARNING | Fail Access get_analytics | IP ADDRESS 127.0.0.1
+2026-07-27 00:37:07,281 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 42, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:37:14,049 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:37:14,049 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:37:14,061 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:37:14,061 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:38:57,959 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:38:57,963 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:38:58,168 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:38:58,178 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:40:08,231 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:40:08,236 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:40:08,655 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:40:08,660 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:40:42,433 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:40:42,440 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:40:42,763 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:40:42,779 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:40:50,790 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:40:50,790 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:40:50,844 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:40:50,846 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:41:35,442 | WARNING | Fail Access get_analytics | IP ADDRESS 127.0.0.1
+2026-07-27 00:41:35,446 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 42, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:41:35,497 | WARNING | Fail Access get_analytics | IP ADDRESS 127.0.0.1
+2026-07-27 00:41:35,497 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 42, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:42:10,755 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:42:10,757 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:42:11,332 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:42:11,333 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:42:13,169 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:42:13,169 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:42:13,216 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:42:13,216 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:42:17,321 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:42:17,321 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:42:17,344 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:42:17,347 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:45:50,454 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:45:50,454 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:45:50,495 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:45:50,496 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:46:55,822 | WARNING | Fail Access get_analytics | IP ADDRESS 127.0.0.1
+2026-07-27 00:46:55,824 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 42, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:46:55,829 | WARNING | Fail Access get_analytics | IP ADDRESS 127.0.0.1
+2026-07-27 00:46:55,829 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 42, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:47:13,998 | WARNING | Fail Access get_analytics | IP ADDRESS 127.0.0.1
+2026-07-27 00:47:13,999 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 42, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:47:14,016 | WARNING | No token on refresh
+2026-07-27 00:47:14,029 | WARNING | Fail Access get_analytics | IP ADDRESS 127.0.0.1
+2026-07-27 00:47:14,030 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 42, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:47:51,170 | WARNING | Fail Access get_analytics | IP ADDRESS 127.0.0.1
+2026-07-27 00:47:51,174 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 42, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:47:51,183 | WARNING | No token on refresh
+2026-07-27 00:47:51,193 | WARNING | Fail Access get_analytics | IP ADDRESS 127.0.0.1
+2026-07-27 00:47:51,194 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 42, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:48:12,725 | WARNING | Token not found
+2026-07-27 00:48:12,727 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-27 00:48:12,851 | WARNING | Token not found
+2026-07-27 00:48:12,852 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-27 00:48:56,364 | WARNING | Token not found
+2026-07-27 00:48:56,365 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-27 00:49:10,941 | INFO | vonder joseph@gmail.com logged in from 127.0.0.1
+2026-07-27 00:49:24,536 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:49:24,547 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:49:24,550 | WARNING | Fail Access | IP ADDRESS 127.0.0.1
+2026-07-27 00:49:24,551 | ERROR | An error occur at get_analytics
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/admins/dashboard.py", line 50, in get_analytics
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: You are not authorized to access this resource
+2026-07-27 00:51:42,557 | ERROR | unauthorized attempt on route create_post
+NoneType: None
+2026-07-27 00:51:42,558 | ERROR | Fail to post
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/posts.py", line 75, in create_post
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Unauthorized
+2026-07-27 00:54:52,054 | ERROR | unauthorized attempt on route create_post
+NoneType: None
+2026-07-27 00:54:52,057 | ERROR | Fail to post
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/posts.py", line 75, in create_post
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Unauthorized
+2026-07-27 00:57:03,998 | ERROR | unauthorized attempt on route create_post
+NoneType: None
+2026-07-27 00:57:04,000 | ERROR | Fail to post
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/posts.py", line 75, in create_post
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Unauthorized
+2026-07-27 00:58:12,107 | ERROR | unauthorized attempt on route create_post
+NoneType: None
+2026-07-27 00:58:12,107 | ERROR | Fail to post
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/posts.py", line 75, in create_post
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 401: Unauthorized

@@ -1,13 +1,11 @@
-from fastapi import HTTPException, status, Depends
-from sqlalchemy.orm import Session as ses
-import resend
+from fastapi import HTTPException, status
 from datetime import datetime, timedelta
 from jose import jwt, ExpiredSignatureError
 from passlib.context import CryptContext
 from dotenv import load_dotenv
 import user_agents
 from uuid import uuid4 as uid
-import re, unicodedata, re, os, logging
+import unicodedata, re, os, logging
 from pathlib import Path
 
 load_dotenv()
@@ -43,8 +41,6 @@ if not logger.handlers:
     file_handler.setFormatter(fomatter)
     logger.addHandler(file_handler)
 
-
-
 # CREATE TOKEN
 def create_token(user_data:dict, exps=60*60*5):
     try:
@@ -71,7 +67,7 @@ def decode_token(token)->dict:
         )
 
 # HASH PASSWORD
-def hash_password(password:str):
+def set_hash_password(password:str):
     try:
         hash_pwd = PWD_CONTENT.hash(password.encode())
         return hash_pwd
@@ -126,4 +122,3 @@ def create_slug(title:str):
     slug = re.sub(r'-{2}', "-", slug)
     
     return slug or "untitled"
-

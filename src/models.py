@@ -1,23 +1,42 @@
-from sqlalchemy import DateTime
+from sqlalchemy import DateTime, String, VARCHAR, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import datetime, timezone
 from src.database import Base, Mixin, post_tags
 
-class Admin(Base, Mixin):
-    __tablename__ = 'admins'
+class Vendor(Base, Mixin):
+    __tablename__ = 'vendors'
     
     id:Mapped[int] = mapped_column(primary_key=True)
-    username:Mapped[str] = mapped_column(nullable=False)
-    email:Mapped[str] = mapped_column(nullable=False)
-    phone:Mapped[str]
-    role:Mapped[str] = mapped_column(default="admin")
-    password:Mapped[str] = mapped_column(nullable=False)
-    max_att:Mapped[int] = mapped_column(default=0, nullable=True)
-    account_lock_delay:Mapped[datetime] = mapped_column(default=None, nullable=True)
-    last_login:Mapped[datetime] = mapped_column(nullable=True)
-    created_at:Mapped[datetime] = mapped_column(default=datetime.now())
-    updated_at:Mapped[datetime] = mapped_column(default=datetime.now())
+    phone:Mapped[str] = mapped_column(String(20), nullable=False, unique=True)
+    name:Mapped[str] = mapped_column(String(255), nullable=False)
+    email:Mapped[str] = mapped_column(String(255), nullable=True)
+    hash_password:Mapped[str] = mapped_column(nullable=False)
+    max_attempt:Mapped[int] =mapped_column(default=0, nullable=True)
+    role:Mapped[str]=mapped_column(default="user", nullable=True)
+    account_locck_delay:Mapped[datetime] = mapped_column(default=None, nullable=True)
+    is_block:Mapped[bool] = mapped_column(default=False, nullable=True)
+    last_login:Mapped[datetime]=mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc), onupdate=True)
+    products:Mapped[list['Products']] = relationship(back_populates="vendor", cascade="all, delete-orphan")
     
+class Products(Base, Mixin):
+    __tablename__ = "products"
+    
+    id:Mapped[int] = mapped_column(primary_key=True)
+    product_name:Mapped[str] = mapped_column(nullable=False, index=True)
+    price:Mapped[str] = mapped_column(nullable=False)
+    vendor_id:Mapped[int] = mapped_column(ForeignKey("vendors.id", ondelete="CASCADE"))
+    vendor_phone:Mapped[str]=mapped_column(nullable=False)
+    featured_image:Mapped[str] = mapped_column(default=None, nullable=True)
+    file_key:Mapped[str] = mapped_column(default=None, nullable=True)
+    market:Mapped[str] = mapped_column(nullable=False)
+    category:Mapped[str] = mapped_column(nullable=False)
+    slug:Mapped[str] = mapped_column(nullable=False)
+    created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc), onupdate=True)
+    
+    vendor:Mapped[list['Vendor']] = relationship(back_populates="products")
 class BlockIPAddresses(Base, Mixin):
     __tablename__ = 'blocked_ip_addresses'
     

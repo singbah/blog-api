@@ -3,10 +3,9 @@ from sqlalchemy.orm import Session as ses
 from datetime import datetime, timedelta
 
 from src.database import get_db
-from src.models import NewsLetter, ContactMessage, Comments
-from config import get_user_agent, create_token, logger, decode_token
+from src.models import NewsLetter, ContactMessage, Comments, Vendor
+from config import get_user_agent, create_token, logger, decode_token, check_password, set_hash_password, MAX_ATTEMPT, ACCOUNT_LOCK_DELAY
 from src.schemas import CreateComment
-
 
 user_bp = APIRouter(prefix="/user")
 
@@ -75,7 +74,7 @@ async def create_user(request:Request, response:Response, user:dict, db:ses=Depe
             status_code=400,
             detail=str(e)
         )
-
+    
 @user_bp.post("/contact")
 async def create_contact(request:Request, user:dict, db:ses=Depends(get_db)):
     try:
@@ -153,3 +152,25 @@ async def added_comment(request:Request, commentObj:CreateComment, db:ses=Depend
             status_code=400,
             detail=str(e)
         )
+
+@user_bp.get("/me")
+async def get_user(request:Request, db:ses=Depends(get_db)):
+    try:
+        token = request.cookies.get("access_token")
+        payload = None
+        if token:
+            payload = decode_token(token)
+            
+        if not token or not payload:
+            logger.warning("Token not found")
+            raise HTTPException(status_code=401, detail="Auths require")
+            
+        user = db.query(Vendor).where(Vendor.id == payload.get("id")).first()
+        if not user or user.is_block:
+            raise HTTPException(status_code=401, detail="User Unavaliable")
+        
+        return user.to_dict(['hash_password'])
+            
+    except Exception as e:
+        logger.exception("error occur")
+        raise HTTPException(status_code=500, detail=str(e))

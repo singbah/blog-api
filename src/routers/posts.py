@@ -94,16 +94,16 @@ async def create_post(
             )
 
 
-        if photo.size > MAX_LENGTH:
+        if photo.size and photo.size > MAX_LENGTH:
             raise HTTPException(
                 status_code=413,
                 detail="Image is too large."
             )
 
-        file_result = upload_to_r2(photo, folder="posts")
+        # file_result = upload_to_r2(photo, folder="posts")
 
-        file_url = file_result["url"]
-        file_key = file_result["key"]
+        # file_url = file_result["url"]
+        # file_key = file_result["key"]
         
         tag_objects = []
         for tag_name in {t.strip() for t in tags.split(",") if t.strip()}:
@@ -126,8 +126,8 @@ async def create_post(
             excert=excert,
             content=content,
             slug=slug,
-            featured_image=file_url,
-            file_key=file_key,
+            featured_image='file_url',
+            file_key='file_key',
             published_at=datetime.strptime(
                 published_at,
                 "%Y-%m-%d"
@@ -152,16 +152,14 @@ async def create_post(
             "post_id": post.id,
             "slug": post.slug,
         }
-
-    
     except HTTPException:
         db.rollback()
         logger.exception("Fail to post")
-        if file_result:
-            try:
-                delete_file_from_r2(file_result["key"])
-            except Exception as e:
-                print(f"Failed to delete uploaded file: {e}")
+        # if file_result:
+        #     try:
+        #         delete_file_from_r2(file_result["key"])
+        #     except Exception as e:
+        #         print(f"Failed to delete uploaded file: {e}")
         raise
 
     except Exception as e:
@@ -182,7 +180,7 @@ async def create_post(
 async def edit_post(edit_data:dict, request:Request, db:session=Depends(get_db)):
     try:
         payload = decode_token(request.cookies.get("access_token"))
-        if not payload:
+        if not payload or payload.get('role') != "admin":
             logger.exception(f"unauthorized attenpt on route {edit_post.__name__}")
             raise HTTPException(
                 status_code=401,
@@ -224,7 +222,6 @@ async def get_post(postSlug:str, request:Request, db:session=Depends(get_db)):
                 status_code=404,
                 detail="Blog Not Found"
             )
-        # post_tags = [p.to_dict() for p in blog.tags]
         return blog.to_dict()
     except Exception as e:
         print(e)
