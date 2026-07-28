@@ -133,7 +133,7 @@ async def added_comment(request:Request, commentObj:CreateComment, db:ses=Depend
         )
         db.add(db_comment)
         db.commit()
-        db.flush(db_comment)
+        db.refresh(db_comment)
         
         logger.info("New Comment added")
         msg = """

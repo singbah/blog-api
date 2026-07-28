@@ -19,7 +19,15 @@ class Vendor(Base, Mixin):
     created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
     updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc), onupdate=True)
     products:Mapped[list['Products']] = relationship(back_populates="vendor", cascade="all, delete-orphan")
-    
+
+class OTP(Base, Mixin):
+    __tablename__ = 'otps'
+    id:Mapped[int] = mapped_column(primary_key=True)
+    code:Mapped[str] = mapped_column(String(6), nullable=False)
+    is_used:Mapped[bool] = mapped_column(default=False, nullable=True)
+    email:Mapped[str] = mapped_column(nullable=False)
+    created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    expires_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=datetime.now(timezone.utc))
 class Products(Base, Mixin):
     __tablename__ = "products"
     

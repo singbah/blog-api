@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 import os
 from uuid import uuid4
 from config import ALLOW_EXTENSTION, MAX_ATTEMPT, MAX_LENGTH, logger, decode_token
+from config.utilities import upload_to_r2
 
 products_bp = APIRouter(prefix="/products", tags=["Products BluePrint"])
 
@@ -74,7 +75,7 @@ async def upload_product(
         
         now = datetime.now()
         # created_at = now
-        new_product = {'product_name':product_name, 'featured_image':file_url, 'file_key':file_url, 'price':price, 'vendor_phone':vendor_phone, 'market':market, 'created_at':now, "vendor_id":vendor_id, 'category':category, 'slug':slug}
+        new_product = {'product_name':product_name, 'featured_image':file_url, 'file_key':file_key, 'price':price, 'vendor_phone':vendor_phone, 'market':market, 'created_at':now, "vendor_id":vendor_id, 'category':category, 'slug':slug}
         
         
         new_pd = Products(**new_product)

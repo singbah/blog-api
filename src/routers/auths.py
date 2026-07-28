@@ -1,12 +1,14 @@
 from fastapi import APIRouter, Request, Response, HTTPException, status, Depends
-from datetime import datetime, timedelta
-import time
+from datetime import datetime, timedelta, timezone
+from uuid import uuid4
+import time, asyncio
 from sqlalchemy.orm import Session as ses
 
-from src.models import Vendor
+from src.models import Vendor, OTP
 from src.database import get_db
-from config import logger
-from config import (get_user_agent, create_token, decode_token, NOW, 
+from config.emails import send_email
+
+from config import (get_user_agent, create_token, logger, decode_token, NOW, 
                     MAX_ATTEMPT, ACCOUNT_LOCK_DELAY, check_password, set_hash_password)
 from src.schemas import UserLogin, CreateUser
 
@@ -40,6 +42,7 @@ async def vendor_signup(user_data:CreateUser, db:ses=Depends(get_db)):
 @auths_bp.post("/signin")
 async def vendor_signin(login_data:UserLogin, request:Request, response:Response, db:ses=Depends(get_db)):
     try:
+        
         now = datetime.now()
         user = db.query(Vendor).where(Vendor.phone == login_data.phone).first()
         ip_address = ''
@@ -203,4 +206,137 @@ async def logout(response:Response, request:Request):
             status_code=400,
             detail=str(e)
         )
+
+@auths_bp.post("/forgot_password")
+async def forgot_password(email:str, request:Request, db:ses=Depends(get_db)):
+    try:
+        if not email:
+            raise HTTPException(status_code=404, detail="You Didn't send email")
+        
+        user = db.query(Vendor).where(Vendor.email == email).first()
+        ip_address = request.client.host if request.client else "None"
+        if not user:
+            logger.warning(f"User with IP {ip_address} Fail Account Recovery with email {email}")
+            raise HTTPException(status_code=401, detail=f"This email {email} is not associated with any account here.")
+        
+        otp = uuid4().hex[0:6]
+        
+        user = {"email":user.email, "name":user.name, "otp":otp}
+        now = datetime.now()
+        new_opt = OTP(
+            code=otp, email=email, created_at=now, expires_at=now + timedelta(minutes=5)
+        )
+        db.add(new_opt)
+        db.commit()
+        db.refresh(new_opt)
+        
+        # await send_email(recipients=email, template_name="account_recovery.html", context={"otp":otp, "name":user.name}, subject="Account recovery")
+        
+        return new_opt.to_dict()
+    except Exception as e:
+        db.rollback()
+        logger.exception("error occur")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@auths_bp.get("/confirm_opt")
+async def confirm_opt_code(otp:str, email:str, request:Request,response:Response, db:ses=Depends(get_db)):
+    try:
+        ip_address = request.client.host if request.client else "None"
+        now = datetime.now(timezone.utc)
+        
+        user = db.query(Vendor).filter(Vendor.email==email).first()
+        if not user:
+            raise HTTPException(status_code=404, detail=f"user with email {email} dosn't exist.")
+        
+        if user.is_block:
+            logger.warning(f"disabled account {email} try account recovery | ip {ip_address}")
+            raise HTTPException(status_code=status.HTTP_423_LOCKED, detail="This account is disabled")
+        
+        code = db.query(OTP).filter(OTP.email==email).where(OTP.code==otp).order_by(OTP.created_at.desc()).first()
+        if not code:
+            logger.warning("Incorrect code")
+            raise HTTPException(status_code=404, detail="OTP not found")
+        
+        if code.expires_at and code.expires_at <= now:
+            logger.warning(f"user {email} retry expried OTP IP {ip_address}")
+            raise HTTPException(status_code=status.HTTP_408_REQUEST_TIMEOUT, detail="OTP EXPIRED, REQUEST NEW ONE.") 
+        
+        if code.is_used:
+            logger.warning(f"User {email} retry used OTP| IP {ip_address}")
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Token already used")       
+        
+        code.is_used = True
+        user.updated_at = now
+        user.last_login = now
+        user.account_locck_delay = None
+        user.max_attempt = 0
+        db.commit()
+        
+        new_access_token = create_token(
+            {
+                "id": user.id,
+                "email": user.email,
+                "role": user.role
+            }
+        )
+
+        new_refresh_token = create_token(
+            {
+                "id": user.id,
+                "email": user.email,
+                "role": user.role
+            },
+            exps=60 * 60 * 24 * 7
+        )
+        
+        response.set_cookie(
+            key="access_token",
+            value=new_access_token,
+            samesite="none",
+            httponly=True,
+            secure=True,
+        )
+        
+        response.set_cookie(
+            key="refresh_token",
+            value=new_refresh_token,
+            samesite="none",
+            httponly=True,
+            secure=True
+        )
+        
+        return user.to_dict()
     
+    except Exception as e:
+        db.rollback()
+        logger.exception("error occur")
+        print(str(e))
+        raise HTTPException(status_code=500, detail=str(e))      
+
+@auths_bp.get("/password-reset")
+async def password_reset(new_password:str, email:str, request:Request, db:ses=Depends(get_db)):
+    try:
+        token = request.cookies.get("access_token")
+        payload = decode_token(token)
+        
+        if not token:
+            logger.warning("No token No access")
+            raise HTTPException(status_code=401, detail="An error occur")
+        
+        if not email:
+            raise HTTPException(status_code=404, detail="user not found")
+        
+        user = db.query(Vendor).filter(Vendor.email==email).first()
+        if not user:
+            raise HTTPException(status_code=404, detail="Couldn't find user")
+        
+        hash_pwd = set_hash_password(new_password)
+        user.hash_password = hash_pwd
+        user.updated_at = datetime.now(timezone.utc)
+        db.commit()
+        
+        return {'detail':"Password changed"}
+    except Exception as e:
+        db.rollback()
+        logger.exception("error occur")
+        raise HTTPException(status_code=500, detail=str(e))

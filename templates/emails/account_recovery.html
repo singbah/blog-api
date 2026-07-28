@@ -19,6 +19,12 @@
 
       h1 {
         color: #2563eb;
+        border: 2px solid black;
+        padding: 10px;
+        text-align: center;
+        font-size: 20px;
+        border-radius: 10px;
+        background-color: rgb(202, 202, 202);
       }
 
       .button {
@@ -34,24 +40,17 @@
 
   <body>
     <div class="card">
-      <h1>Welcome {{ name }}!</h1>
+      <p><strong>Easi Tech Lr.</strong>.</p>
+      <h2>Hello {{ name }}!</h2>
+      <p>Account Recovery</p>
+
+      <h4>Use the OPT code below to confirm account recovery</h4>
+      <h1>ET- {{otp}}</h1>
 
       <p>
-        Thanks for subscribing to
-        <strong>Easi Tech Lr.</strong>.
+        If you didn't request account recovery simply ignore this message and
+        please don't share this code with any ony
       </p>
-
-      <p>You'll receive updates on:</p>
-
-      <ul>
-        <li>Market Prices</li>
-        <li>Fuel Prices</li>
-        <li>Exchange Rates</li>
-        <li>Financial Tips</li>
-      </ul>
-      <a class="button" href="{{ website }}"> Visit Website </a>
     </div>
-
-    <div class="padding">{{body}}</div>
   </body>
 </html>
