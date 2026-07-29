@@ -12,7 +12,7 @@ from config import (get_user_agent, create_token, logger, decode_token, NOW,
                     MAX_ATTEMPT, ACCOUNT_LOCK_DELAY, check_password, set_hash_password)
 from src.schemas import UserLogin, CreateUser
 
-auths_bp = APIRouter(prefix="/auths")
+auths_bp = APIRouter(prefix="/api/auths")
 
 @auths_bp.post("/signup")
 async def vendor_signup(user_data:CreateUser, db:ses=Depends(get_db)):
@@ -84,19 +84,21 @@ async def vendor_signin(login_data:UserLogin, request:Request, response:Response
         response.set_cookie(
             key="access_token",
             value=access_token,
-            secure=True, 
-            samesite='none',
+            samesite='lax',
             httponly=True,
-            # partitioned=True
+            secure=True,
+            max_age=60*60*24*7,
+            path="/"
         )
         # REFRESH TOKEN
         response.set_cookie(
             key="refresh_token",
             value=refresh_token,
-            secure=True, 
-            samesite='none',
+            samesite='lax',
             httponly=True,
-            # partitioned=True
+            secure=True,
+            max_age=60*60*24*7,
+            path="/"
         )
         logger.info(f"vonder {user.email} logged in from {ip_address}")
         return user.to_dict()
@@ -128,7 +130,7 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
             response.delete_cookie(
                 key="access_token",
                 secure=True,
-                samesite="none")
+                samesite="lax")
             
             logger.warning("user not found")
             raise HTTPException(
@@ -146,7 +148,7 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
                 {
                     "id": user.id,
                     "email": user.email,
-                    "role": "user"
+                    "role": user.role
                 }
             )
 
@@ -154,7 +156,7 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
                 {
                     "id": user.id,
                     "email": user.email,
-                    "role": "user"
+                    "role": user.role
                 },
                 exps=60 * 60 * 24 * 7
             )
@@ -162,17 +164,21 @@ async def refresh(request:Request, response:Response, db:ses=Depends(get_db)):
         response.set_cookie(
             key="access_token",
             value=new_access_token,
-            samesite="none",
+            samesite='lax',
             httponly=True,
             secure=True,
+            max_age=3600*24*7,
+            path="/"
         )
         
         response.set_cookie(
             key="refresh_token",
             value=new_refresh_token,
-            samesite="none",
+            samesite='lax',
             httponly=True,
-            secure=True
+            secure=True,
+            max_age=3600*24*7,
+            path="/"
         )
         
         return user.to_dict()
@@ -192,12 +198,12 @@ async def logout(response:Response, request:Request):
         response.delete_cookie(
         key="access_token",
         secure=True,
-        samesite="none"
+        samesite="lax"
         )
         response.delete_cookie(
         key="refresh_token",
         secure=True,
-        samesite="none"
+        samesite="lax"
         )
         return {"detail":"you are logout"}
     except Exception as e:
@@ -239,7 +245,7 @@ async def forgot_password(email:str, request:Request, db:ses=Depends(get_db)):
         raise HTTPException(status_code=500, detail=str(e))
 
 @auths_bp.get("/confirm_opt")
-async def confirm_opt_code(otp:str, email:str, request:Request,response:Response, db:ses=Depends(get_db)):
+async def confirm_opt_code(otp:str, email:str, request:Request,response:Response, db:ses=Depends(get_db)):#
     try:
         ip_address = request.client.host if request.client else "None"
         now = datetime.now(timezone.utc)
@@ -292,17 +298,20 @@ async def confirm_opt_code(otp:str, email:str, request:Request,response:Response
         response.set_cookie(
             key="access_token",
             value=new_access_token,
-            samesite="none",
+            samesite="lax",
             httponly=True,
             secure=True,
+            path="/",
+            max_age=60*60*24*7,
         )
         
         response.set_cookie(
             key="refresh_token",
             value=new_refresh_token,
-            samesite="none",
+            samesite="lax",
             httponly=True,
-            secure=True
+            secure=True,
+            max_age=60*60*24*7,
         )
         
         return user.to_dict()

@@ -1,4 +1,4 @@
-from sqlalchemy import DateTime, String, VARCHAR, ForeignKey
+from sqlalchemy import DateTime, String, ForeignKey, Float
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import datetime, timezone
 from src.database import Base, Mixin, post_tags
@@ -14,12 +14,49 @@ class Vendor(Base, Mixin):
     max_attempt:Mapped[int] =mapped_column(default=0, nullable=True)
     role:Mapped[str]=mapped_column(default="user", nullable=True)
     account_locck_delay:Mapped[datetime] = mapped_column(default=None, nullable=True)
+    is_vendor:Mapped[bool]=mapped_column(default=False, nullable=True)
     is_block:Mapped[bool] = mapped_column(default=False, nullable=True)
+    is_deleted:Mapped[bool]=mapped_column(default=False, nullable=True)
     last_login:Mapped[datetime]=mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
     created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
     updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc), onupdate=True)
     products:Mapped[list['Products']] = relationship(back_populates="vendor", cascade="all, delete-orphan")
 
+class PaymentRecord(Base, Mixin):
+    __tablename__ = "payments"
+    id:Mapped[int] = mapped_column(primary_key=True)
+    payment_key:Mapped[str] = mapped_column(unique=True, nullable=False)
+    users_phone:Mapped[str] = mapped_column(nullable=False)
+    user_id:Mapped[int] = mapped_column(ForeignKey("vendors.id", ondelete="CASCADE"))
+    amount:Mapped[float] = mapped_column(nullable=False)
+    created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc), onupdate=True)
+    
+
+class Subscription(Base, Mixin):
+    __tablename__='subscriptions'
+    id:Mapped[int] = mapped_column(primary_key=True)
+    user_id:Mapped[int] = mapped_column(ForeignKey("vendors.id"))
+    payment_id:Mapped[int] = mapped_column(ForeignKey('payments.id', ondelete="CASCADE"))
+    
+    expires_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    
+class Orders(Base, Mixin):
+    __tablename__ = 'orders'
+    id:Mapped[int] = mapped_column(primary_key=True)
+    user_phone:Mapped[str] = mapped_column(default=None, nullable=True)
+    order_id:Mapped[str] = mapped_column(unique=True, nullable=False)
+    product_id:Mapped[int] = mapped_column(ForeignKey("products.id", ondelete="CASCADE"))
+    product_name:Mapped[str]=mapped_column(default="product", nullable=False)
+    vendor_id:Mapped[int] = mapped_column(ForeignKey("vendors.id", ondelete="CASCADE"))
+    quantity:Mapped[int] = mapped_column(nullable=False)
+    money:Mapped[float] = mapped_column(nullable=False, default=Float())
+    status:Mapped[str]=mapped_column(nullable=True, default="pending")
+    created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
+    updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc), onupdate=True)
+    
+    product:Mapped[list['Products']] = relationship(back_populates="order")
+    
 class OTP(Base, Mixin):
     __tablename__ = 'otps'
     id:Mapped[int] = mapped_column(primary_key=True)
@@ -37,6 +74,7 @@ class Products(Base, Mixin):
     vendor_id:Mapped[int] = mapped_column(ForeignKey("vendors.id", ondelete="CASCADE"))
     vendor_phone:Mapped[str]=mapped_column(nullable=False)
     featured_image:Mapped[str] = mapped_column(default=None, nullable=True)
+    details:Mapped[str] = mapped_column(default="No Description Provided", nullable=True)
     file_key:Mapped[str] = mapped_column(default=None, nullable=True)
     market:Mapped[str] = mapped_column(nullable=False)
     category:Mapped[str] = mapped_column(nullable=False)
@@ -44,6 +82,7 @@ class Products(Base, Mixin):
     created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc))
     updated_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc), onupdate=True)
     
+    order:Mapped[list['Orders']] = relationship(back_populates="product", cascade="all, delete-orphan")
     vendor:Mapped[list['Vendor']] = relationship(back_populates="products")
 class BlockIPAddresses(Base, Mixin):
     __tablename__ = 'blocked_ip_addresses'

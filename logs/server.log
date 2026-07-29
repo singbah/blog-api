@@ -1,1811 +1,1015 @@
-2026-07-27 17:51:38,191 | ERROR | error occur
+2026-07-29 08:18:16,705 | ERROR | Fail to post
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    if code.expires_at < now:
-       ^^^^^^^^^^^^^^^^^^^^^
-TypeError: can't compare offset-naive and offset-aware datetimes
-2026-07-27 17:53:43,581 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    if code.expires_at and code.expires_at < now:
-                           ^^^^^^^^^^^^^^^^^^^^^
-TypeError: can't compare offset-naive and offset-aware datetimes
-2026-07-27 17:55:33,527 | WARNING | User singbahjohn@gmail.com retry used OTP| IP 127.0.0.1
-2026-07-27 17:55:33,530 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 255, in confirm_opt_code
-    raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Token already used")
-fastapi.exceptions.HTTPException: 409: Token already used
-2026-07-27 17:58:44,406 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    if code.expires_at and code.expires_at < now:
-                           ^^^^^^^^^^^^^^^^^^^^^
-TypeError: can't compare offset-naive and offset-aware datetimes
-2026-07-27 17:58:47,779 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    if code.expires_at and code.expires_at < now:
-                           ^^^^^^^^^^^^^^^^^^^^^
-TypeError: can't compare offset-naive and offset-aware datetimes
-2026-07-27 17:59:28,703 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    if code.expires_at and code.expires_at < now:
-                           ^^^^^^^^^^^^^^^^^^^^^
-TypeError: can't compare offset-naive and offset-aware datetimes
-2026-07-27 18:00:10,735 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    if code.expires_at and code.expires_at <= now:
-                           ^^^^^^^^^^^^^^^^^^^^^^
-TypeError: can't compare offset-naive and offset-aware datetimes
-2026-07-27 18:00:15,975 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    if code.expires_at and code.expires_at <= now:
-                           ^^^^^^^^^^^^^^^^^^^^^^
-TypeError: can't compare offset-naive and offset-aware datetimes
-2026-07-27 18:02:52,080 | WARNING | User singbahjohn@gmail.com retry used OTP| IP 127.0.0.1
-2026-07-27 18:02:52,083 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 256, in confirm_opt_code
-    raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Token already used")
-fastapi.exceptions.HTTPException: 409: Token already used
-2026-07-27 18:08:39,576 | WARNING | Incorrect code
-2026-07-27 18:08:39,579 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 247, in confirm_opt_code
-    raise HTTPException(status_code=404, detail="OTP not found")
-fastapi.exceptions.HTTPException: 404: OTP not found
-2026-07-27 18:09:01,481 | WARNING | user singbahjohn@gmail.com retry expried OTP IP 127.0.0.1
-2026-07-27 18:09:01,483 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 251, in confirm_opt_code
-    raise HTTPException(status_code=status.HTTP_408_REQUEST_TIMEOUT, detail="OTP EXPIRED, REQUEST NEW ONE.")
-fastapi.exceptions.HTTPException: 408: OTP EXPIRED, REQUEST NEW ONE.
-2026-07-27 18:13:52,369 | WARNING | Incorrect code
-2026-07-27 18:13:52,371 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 247, in confirm_opt_code
-    raise HTTPException(status_code=404, detail="OTP not found")
-fastapi.exceptions.HTTPException: 404: OTP not found
-2026-07-27 18:14:06,405 | WARNING | Incorrect code
-2026-07-27 18:14:06,407 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 247, in confirm_opt_code
-    raise HTTPException(status_code=404, detail="OTP not found")
-fastapi.exceptions.HTTPException: 404: OTP not found
-2026-07-27 18:19:09,621 | WARNING | Incorrect code
-2026-07-27 18:19:09,623 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    raise HTTPException(status_code=404, detail="OTP not found")
-fastapi.exceptions.HTTPException: 404: OTP not found
-2026-07-27 18:20:04,576 | WARNING | Incorrect code
-2026-07-27 18:20:04,581 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    raise HTTPException(status_code=404, detail="OTP not found")
-fastapi.exceptions.HTTPException: 404: OTP not found
-2026-07-27 18:20:11,617 | WARNING | Incorrect code
-2026-07-27 18:20:11,620 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    raise HTTPException(status_code=404, detail="OTP not found")
-fastapi.exceptions.HTTPException: 404: OTP not found
-2026-07-27 18:20:21,789 | WARNING | Incorrect code
-2026-07-27 18:20:21,792 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    raise HTTPException(status_code=404, detail="OTP not found")
-fastapi.exceptions.HTTPException: 404: OTP not found
-2026-07-27 18:20:34,767 | WARNING | Incorrect code
-2026-07-27 18:20:34,769 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    raise HTTPException(status_code=404, detail="OTP not found")
-fastapi.exceptions.HTTPException: 404: OTP not found
-2026-07-27 18:21:00,427 | WARNING | Incorrect code
-2026-07-27 18:21:00,430 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in confirm_opt_code
-    raise HTTPException(status_code=404, detail="OTP not found")
-fastapi.exceptions.HTTPException: 404: OTP not found
-2026-07-27 18:21:21,168 | WARNING | user singbahjohn@gmail.com retry expried OTP IP 127.0.0.1
-2026-07-27 18:21:21,171 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 253, in confirm_opt_code
-    raise HTTPException(status_code=status.HTTP_408_REQUEST_TIMEOUT, detail="OTP EXPIRED, REQUEST NEW ONE.")
-fastapi.exceptions.HTTPException: 408: OTP EXPIRED, REQUEST NEW ONE.
-2026-07-27 18:29:47,419 | WARNING | user singbahjohn@gmail.com retry expried OTP IP 127.0.0.1
-2026-07-27 18:29:47,422 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 253, in confirm_opt_code
-    raise HTTPException(status_code=status.HTTP_408_REQUEST_TIMEOUT, detail="OTP EXPIRED, REQUEST NEW ONE.")
-fastapi.exceptions.HTTPException: 408: OTP EXPIRED, REQUEST NEW ONE.
-2026-07-27 18:29:57,455 | WARNING | user singbahjohn@gmail.com retry expried OTP IP 127.0.0.1
-2026-07-27 18:29:57,458 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 253, in confirm_opt_code
-    raise HTTPException(status_code=status.HTTP_408_REQUEST_TIMEOUT, detail="OTP EXPIRED, REQUEST NEW ONE.")
-fastapi.exceptions.HTTPException: 408: OTP EXPIRED, REQUEST NEW ONE.
-2026-07-27 20:33:47,632 | WARNING | No token No access
-2026-07-27 20:33:47,633 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 324, in password_reset
-    raise HTTPException(status_code=401, detail="An error occur")
-fastapi.exceptions.HTTPException: 401: An error occur
-2026-07-27 20:34:52,576 | WARNING | No token No access
-2026-07-27 20:34:52,576 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 324, in password_reset
-    raise HTTPException(status_code=401, detail="An error occur")
-fastapi.exceptions.HTTPException: 401: An error occur
-2026-07-27 20:36:35,150 | WARNING | No token No access
-2026-07-27 20:36:35,150 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 324, in password_reset
-    raise HTTPException(status_code=401, detail="An error occur")
-fastapi.exceptions.HTTPException: 401: An error occur
-2026-07-27 20:41:47,778 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
-2026-07-27 20:42:51,072 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
-2026-07-27 20:43:19,459 | WARNING | This account is log for 86101
-2026-07-27 20:43:28,258 | WARNING | This account is log for 86110
-2026-07-27 20:43:31,167 | WARNING | This account is log for 86113
-2026-07-27 20:43:32,506 | WARNING | This account is log for 86114
-2026-07-27 20:43:32,723 | WARNING | This account is log for 86114
-2026-07-27 20:43:33,182 | WARNING | This account is log for 86115
-2026-07-27 20:43:33,453 | WARNING | This account is log for 86115
-2026-07-27 20:44:32,059 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
-2026-07-27 23:44:51,492 | ERROR | Fail to post
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/services/products.py", line 71, in upload_product
-    r2_file_upload = upload_to_r2(photo, 'posts')
-                     ^^^^^^^^^^^^
-NameError: name 'upload_to_r2' is not defined
-2026-07-27 23:44:55,939 | ERROR | Fail to post
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/services/products.py", line 71, in upload_product
-    r2_file_upload = upload_to_r2(photo, 'posts')
-                     ^^^^^^^^^^^^
-NameError: name 'upload_to_r2' is not defined
-2026-07-27 23:50:38,907 | ERROR | Fail to post
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/services/products.py", line 71, in upload_product
-    r2_file_upload = upload_to_r2(photo, 'posts')
-                     ^^^^^^^^^^^^
-NameError: name 'upload_to_r2' is not defined
-2026-07-28 01:54:26,733 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     )
     ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:54:26,740 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column "details" of relation "products" does not exist
+LINE 1: ..., price, vendor_id, vendor_phone, featured_image, details, f...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/services/products.py", line 113, in upload_product
+    db.commit()
+    ~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
     )
     ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "details" of relation "products" does not exist
+LINE 1: ..., price, vendor_id, vendor_phone, featured_image, details, f...
+                                                             ^
 
-During handling of the above exception, another exception occurred:
-
+[SQL: INSERT INTO products (product_name, price, vendor_id, vendor_phone, featured_image, details, file_key, market, category, slug, created_at, updated_at) VALUES (%(product_name)s, %(price)s, %(vendor_id)s, %(vendor_phone)s, %(featured_image)s, %(details)s, %(file_key)s, %(market)s, %(category)s, %(slug)s, %(created_at)s, %(updated_at)s) RETURNING products.id]
+[parameters: {'product_name': 'Men Watch', 'price': 100, 'vendor_id': 3, 'vendor_phone': '0777322000', 'featured_image': 'file_url', 'details': 'Men Watch, Brand new ones', 'file_key': 'file_key', 'market': 'duala', 'category': 'eletronic', 'slug': 'men_watch', 'created_at': datetime.datetime(2026, 7, 29, 8, 18, 16, 672833), 'updated_at': datetime.datetime(2026, 7, 29, 8, 16, 53, 160004, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-07-29 08:39:12,895 | INFO | vonder joseph@gmail.com logged in from 127.0.0.1
+2026-07-29 08:52:43,500 | INFO | vonder mrBinda2@gmail.com logged in from 127.0.0.1
+2026-07-29 08:54:30,463 | INFO | vonder joseph@gmail.com logged in from 127.0.0.1
+2026-07-29 09:00:08,356 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-29 09:08:02,246 | INFO | vonder mrBinda2@gmail.com logged in from 127.0.0.1
+2026-07-29 09:14:38,036 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-29 09:17:32,705 | INFO | vonder mrBinda2@gmail.com logged in from 127.0.0.1
+2026-07-29 09:18:32,734 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-29 09:24:28,336 | WARNING | No token on refresh
+2026-07-29 09:25:35,478 | INFO | vonder mrBinda2@gmail.com logged in from 127.0.0.1
+2026-07-29 09:54:03,805 | WARNING | No token on refresh
+2026-07-29 09:59:14,225 | WARNING | Token not found
+2026-07-29 09:59:14,230 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 09:59:14,254 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 213, in vendor_analytic
     payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:54:26,751 | ERROR | Token has expired
-Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
     payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:54:26,755 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ~~~~~^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+                                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-07-29 09:59:14,278 | WARNING | Token not found
+2026-07-29 09:59:14,279 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 10:04:17,926 | WARNING | No token on refresh
+2026-07-29 13:00:55,245 | WARNING | Token not found
+2026-07-29 13:00:55,248 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 13:00:55,253 | WARNING | Token not found
+2026-07-29 13:00:55,253 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 13:00:55,257 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 213, in vendor_analytic
     payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:54:36,828 | ERROR | Token has expired
-Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
     payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ~~~~~^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+                                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-07-29 13:04:02,156 | INFO | vonder mrBinda2@gmail.com logged in from 127.0.0.1
+2026-07-29 13:05:05,881 | INFO | vonder joseph@gmail.com logged in from 127.0.0.1
+2026-07-29 17:12:39,436 | WARNING | Token not found
+2026-07-29 17:12:39,440 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 17:12:39,443 | WARNING | Token not found
+2026-07-29 17:12:39,444 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 17:12:52,508 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-29 18:27:01,809 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     )
     ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:54:36,830 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "orders" violates foreign key constraint "orders_product_id_fkey"
+DETAIL:  Key (product_id)=(3) is not present in table "products".
+
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/services/products.py", line 66, in send_order
+    db.commit()
+    ~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
     )
     ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "orders" violates foreign key constraint "orders_product_id_fkey"
+DETAIL:  Key (product_id)=(3) is not present in table "products".
 
-During handling of the above exception, another exception occurred:
+[SQL: INSERT INTO orders (user_phone, order_id, product_id, product_name, vendor_id, quantity, money, status, created_at, updated_at) VALUES (%(user_phone)s, %(order_id)s, %(product_id)s, %(product_name)s, %(vendor_id)s, %(quantity)s, %(money)s, %(status)s, %(created_at)s, %(updated_at)s) RETURNING orders.id]
+[parameters: {'user_phone': '0777322000', 'order_id': 'd266591f8dfd45f38f75b914034bb2dd', 'product_id': 3, 'product_name': 'Shoes fo Women', 'vendor_id': 3, 'quantity': 1, 'money': 80.0, 'status': 'pending', 'created_at': datetime.datetime(2026, 7, 29, 17, 57, 28, 624499, tzinfo=datetime.timezone.utc), 'updated_at': datetime.datetime(2026, 7, 29, 17, 57, 28, 624617, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-29 18:27:01,860 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "orders" violates foreign key constraint "orders_product_id_fkey"
+DETAIL:  Key (product_id)=(3) is not present in table "products".
+
+
+The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/services/products.py", line 66, in send_order
+    db.commit()
+    ~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "orders" violates foreign key constraint "orders_product_id_fkey"
+DETAIL:  Key (product_id)=(3) is not present in table "products".
+
+[SQL: INSERT INTO orders (user_phone, order_id, product_id, product_name, vendor_id, quantity, money, status, created_at, updated_at) VALUES (%(user_phone)s, %(order_id)s, %(product_id)s, %(product_name)s, %(vendor_id)s, %(quantity)s, %(money)s, %(status)s, %(created_at)s, %(updated_at)s) RETURNING orders.id]
+[parameters: {'user_phone': '0777322000', 'order_id': 'd266591f8dfd45f38f75b914034bb2dd', 'product_id': 3, 'product_name': 'Shoes fo Women', 'vendor_id': 3, 'quantity': 1, 'money': 80.0, 'status': 'pending', 'created_at': datetime.datetime(2026, 7, 29, 17, 57, 28, 624499, tzinfo=datetime.timezone.utc), 'updated_at': datetime.datetime(2026, 7, 29, 17, 57, 28, 624617, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-29 18:28:17,562 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "orders" violates foreign key constraint "orders_product_id_fkey"
+DETAIL:  Key (product_id)=(3) is not present in table "products".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/services/products.py", line 66, in send_order
+    db.commit()
+    ~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "orders" violates foreign key constraint "orders_product_id_fkey"
+DETAIL:  Key (product_id)=(3) is not present in table "products".
+
+[SQL: INSERT INTO orders (user_phone, order_id, product_id, product_name, vendor_id, quantity, money, status, created_at, updated_at) VALUES (%(user_phone)s, %(order_id)s, %(product_id)s, %(product_name)s, %(vendor_id)s, %(quantity)s, %(money)s, %(status)s, %(created_at)s, %(updated_at)s) RETURNING orders.id]
+[parameters: {'user_phone': '0777322000', 'order_id': '0a428e9547c04d81840ebe33bf5e2ba7', 'product_id': 3, 'product_name': 'Shoes fo Women', 'vendor_id': 3, 'quantity': 1, 'money': 80.0, 'status': 'pending', 'created_at': datetime.datetime(2026, 7, 29, 17, 57, 28, 624499, tzinfo=datetime.timezone.utc), 'updated_at': datetime.datetime(2026, 7, 29, 17, 57, 28, 624617, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-29 18:28:17,605 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "orders" violates foreign key constraint "orders_product_id_fkey"
+DETAIL:  Key (product_id)=(3) is not present in table "products".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/services/products.py", line 66, in send_order
+    db.commit()
+    ~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "orders" violates foreign key constraint "orders_product_id_fkey"
+DETAIL:  Key (product_id)=(3) is not present in table "products".
+
+[SQL: INSERT INTO orders (user_phone, order_id, product_id, product_name, vendor_id, quantity, money, status, created_at, updated_at) VALUES (%(user_phone)s, %(order_id)s, %(product_id)s, %(product_name)s, %(vendor_id)s, %(quantity)s, %(money)s, %(status)s, %(created_at)s, %(updated_at)s) RETURNING orders.id]
+[parameters: {'user_phone': '0777322000', 'order_id': '0a428e9547c04d81840ebe33bf5e2ba7', 'product_id': 3, 'product_name': 'Shoes fo Women', 'vendor_id': 3, 'quantity': 1, 'money': 80.0, 'status': 'pending', 'created_at': datetime.datetime(2026, 7, 29, 17, 57, 28, 624499, tzinfo=datetime.timezone.utc), 'updated_at': datetime.datetime(2026, 7, 29, 17, 57, 28, 624617, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-29 18:54:28,157 | WARNING | Token not found
+2026-07-29 18:54:28,162 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 18:54:28,190 | WARNING | Token not found
+2026-07-29 18:54:28,190 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 18:54:28,198 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 213, in vendor_analytic
     payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:54:36,835 | ERROR | Token has expired
-Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
     payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:54:36,837 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ~~~~~^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+                                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-07-29 18:55:19,968 | WARNING | Token not found
+2026-07-29 18:55:19,969 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 18:55:19,975 | WARNING | Token not found
+2026-07-29 18:55:19,975 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 18:55:19,980 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 213, in vendor_analytic
     payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:55:01,491 | ERROR | Token has expired
-Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
     payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:55:01,492 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ~~~~~^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+                                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-07-29 18:55:36,748 | WARNING | Token not found
+2026-07-29 18:55:36,749 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 18:55:36,759 | WARNING | Token not found
+2026-07-29 18:55:36,759 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 18:55:36,771 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 213, in vendor_analytic
     payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:55:01,506 | ERROR | Token has expired
-Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
     payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:55:01,508 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ~~~~~^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+                                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-07-29 22:31:53,204 | WARNING | Token not found
+2026-07-29 22:31:53,206 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 22:31:53,208 | WARNING | Token not found
+2026-07-29 22:31:53,208 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 22:31:53,210 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 213, in vendor_analytic
     payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:55:04,916 | ERROR | Token has expired
-Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
     payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:55:04,918 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ~~~~~^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+                                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-07-29 22:32:03,617 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-29 22:35:10,562 | WARNING | Token not found
+2026-07-29 22:35:10,564 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 22:35:10,569 | WARNING | Token not found
+2026-07-29 22:35:10,570 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 22:35:10,572 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 213, in vendor_analytic
     payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:55:04,926 | ERROR | Token has expired
-Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
     payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:55:04,932 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ~~~~~^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+                                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-07-29 22:35:21,485 | WARNING | Token not found
+2026-07-29 22:35:21,486 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 22:35:21,499 | WARNING | Token not found
+2026-07-29 22:35:21,499 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 22:35:21,501 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 213, in vendor_analytic
     payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:55:14,062 | ERROR | Token has expired
-Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
     payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:55:14,065 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ~~~~~^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+                                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-07-29 22:36:50,151 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-29 22:47:16,476 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-29 22:48:30,195 | WARNING | Token not found
+2026-07-29 22:48:30,195 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 22:48:30,199 | WARNING | Token not found
+2026-07-29 22:48:30,199 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 22:48:30,209 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 213, in vendor_analytic
     payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:55:14,070 | ERROR | Token has expired
-Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
     payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:55:14,071 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ~~~~~^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+                                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-07-29 22:49:26,929 | WARNING | Token not found
+2026-07-29 22:49:26,929 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 22:49:26,933 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 213, in vendor_analytic
     payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:55:54,598 | ERROR | Token has expired
-Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
     payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:55:54,601 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ~~~~~^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+                                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-07-29 22:49:26,962 | WARNING | Token not found
+2026-07-29 22:49:26,963 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 22:49:33,341 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-29 22:58:54,188 | WARNING | Token not found
+2026-07-29 22:58:54,188 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 22:58:54,205 | WARNING | Token not found
+2026-07-29 22:58:54,206 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 22:58:54,211 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 213, in vendor_analytic
     payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:55:54,644 | ERROR | Token has expired
-Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
     payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:55:54,648 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ~~~~~^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+                                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-07-29 22:59:05,222 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-29 23:14:46,750 | WARNING | Token not found
+2026-07-29 23:14:46,750 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 23:14:46,752 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 213, in vendor_analytic
     payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:56:13,605 | ERROR | Token has expired
-Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
     payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:56:13,609 | ERROR | error occur
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ~~~~~^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+                                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-07-29 23:14:46,753 | WARNING | Token not found
+2026-07-29 23:14:46,754 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 23:14:48,213 | WARNING | Token not found
+2026-07-29 23:14:48,213 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:56:13,617 | ERROR | Token has expired
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-29 23:14:48,218 | WARNING | Token not found
+2026-07-29 23:14:48,218 | ERROR | error occur
 Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:56:13,619 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:56:48,169 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:56:48,172 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:56:48,179 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:56:48,182 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:57:06,377 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:57:06,381 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:57:06,391 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:57:06,395 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:57:55,046 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:57:55,056 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:57:55,100 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:57:55,105 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:58:04,139 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:58:04,141 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:58:04,145 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:58:04,147 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:58:13,802 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:58:13,805 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:58:13,809 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:58:13,813 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:58:22,784 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:58:22,787 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:58:22,791 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:58:22,795 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:58:47,904 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:58:47,907 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:58:47,917 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:58:47,919 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:58:57,394 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:58:57,399 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:58:57,438 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:58:57,450 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:59:10,374 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:59:10,382 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 01:59:10,397 | ERROR | Token has expired
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-2026-07-28 01:59:10,403 | ERROR | error occur
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 60, in decode_token
-    payload = jwt.decode(token, key=APP_KEY, algorithms=ALGORITHM)
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 174, in decode
-    _validate_claims(
-    ~~~~~~~~~~~~~~~~^
-        claims,
-        ^^^^^^^
-    ...<5 lines>...
-        options=defaults,
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 497, in _validate_claims
-    _validate_exp(claims, leeway=leeway)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/jose/jwt.py", line 331, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired.")
-jose.exceptions.ExpiredSignatureError: Signature has expired.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 162, in get_user
-    payload = decode_token(token)
-  File "/home/john-p-singbah/Documents/blog_api/config/__init__.py", line 64, in decode_token
-    raise HTTPException(
-    ...<2 lines>...
-    )
-fastapi.exceptions.HTTPException: 401: Token has expired
-2026-07-28 02:00:01,294 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require

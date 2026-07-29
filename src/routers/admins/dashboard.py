@@ -5,7 +5,7 @@ from src.models import *
 from sqlalchemy.orm import Session as ses
 
 
-admin_bp = APIRouter(prefix="/admin")
+admin_bp = APIRouter(prefix="/api/admin")
 
 @admin_bp.get("/settings")
 async def get_settings(request:Request, db:ses=Depends(get_db)):

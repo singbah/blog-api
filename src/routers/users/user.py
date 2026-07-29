@@ -1,13 +1,13 @@
-from fastapi import APIRouter, Request, Response, HTTPException, status, Depends
+from fastapi import APIRouter, Request, Response, HTTPException, status, Depends, Query
 from sqlalchemy.orm import Session as ses
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from src.database import get_db
-from src.models import NewsLetter, ContactMessage, Comments, Vendor
+from src.models import NewsLetter, ContactMessage, Comments, Vendor, Products, Orders
 from config import get_user_agent, create_token, logger, decode_token, check_password, set_hash_password, MAX_ATTEMPT, ACCOUNT_LOCK_DELAY
 from src.schemas import CreateComment
 
-user_bp = APIRouter(prefix="/user")
+user_bp = APIRouter(prefix="/api/user")
 
 @user_bp.post("/create")
 async def create_user(request:Request, response:Response, user:dict, db:ses=Depends(get_db)):
@@ -172,5 +172,89 @@ async def get_user(request:Request, db:ses=Depends(get_db)):
         return user.to_dict(['hash_password'])
             
     except Exception as e:
+        logger.exception("error occur")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@user_bp.get("/complete_transaction")
+async def complete_transaction(order_id:str, resquest:Request, db:ses=Depends(get_db)):
+    try:
+        if not order_id:
+            logger.warning("You didn't send order id")
+            print("You didn't send order id")
+            raise HTTPException(status_code=404, detail="order unavaliable")
+        
+        order = db.query(Orders).filter(Orders.order_id==order_id).first()
+        if not order:
+            logger.warning("order not avaliable in db")
+            print("order not avaliable in db")
+            raise HTTPException(status_code=404, detail="Order is unavaliable")
+        
+        order.status = 'paid'
+        order.updated_at = datetime.now(timezone.utc)
+        db.commit()
+        return {"detail":"Order's checked"}
+    except Exception as e:
+        db.rollback()
+        logger.exception("error occur")
+        raise HTTPException(status_code=500, detail=str(e))
+        
+
+@user_bp.get("/vendor_analytic")
+async def vendor_analytic(
+    request:Request, 
+    cursor:int=Query(default=0), 
+    limit:int=Query(le=20, limit=100), 
+    db:ses=Depends(get_db)):
+    try:
+        now = datetime.now(timezone.utc)
+        week_day = now + timedelta(days=9)
+        
+        token = request.cookies.get("access_token")
+        payload = decode_token(token)
+        if not payload:
+            raise HTTPException(status_code=401, detail="You need token to access this info")
+        
+        user = db.query(Vendor).filter(Vendor.id == payload.get("id")).first()
+        if user and user.is_deleted or user.is_block:
+            logger.warning(f"deleted account attempt to get info")
+            raise HTTPException(status_code=423, detail="Unavaliable")
+        
+        products = db.query(Products).filter(Products.vendor_id==payload.get("id")).where(Products.id > cursor).order_by(Products.created_at.desc()).limit(limit).all()
+        
+        orders = db.query(Orders).where(Orders.vendor_id==payload.get("id")).order_by(Orders.created_at.desc()).limit(10).all()
+        
+        my_orders = db.query(Orders).where(Orders.user_phone==user.phone).order_by(Orders.created_at.desc()).limit(10).all()
+        
+        total_sales = sum([float(order.money) for order in orders if order.status == 'paid' ])
+        expenditure = sum([float(order.money) for order in my_orders if order.status == 'paid' ])
+        total_product_customers_order=sum([product.quantity for product in orders])
+        total_products_order=sum([product.quantity for product in my_orders])
+        profit_margin = float(total_sales-expenditure)
+        pending_customers_orders = len([order for order in orders if order.status == 'pending'])
+        pending_orders = len([order for order in my_orders if order.status == 'pending'])
+        
+        sales_record = {"total_sales":total_sales, 
+                        "expenditure":expenditure, 
+                        "profit_margin":profit_margin,
+                        'total_product_customers_order':total_product_customers_order,
+                        'total_products_order':total_products_order,
+                        'pending_orders':pending_orders,
+                        'pending_customers_orders':pending_customers_orders
+                        }
+        
+        print(sales_record)
+        
+        return{'product':[p.to_dict() for p in products], 
+               "customers_orders":[order.to_dict() for order in orders],
+               "customer_orders_count":len(orders),
+               "user_orders":[m_order.to_dict() for m_order in my_orders],
+               "user_orders_count":len(my_orders),
+               "product_count":len(products),
+               "cursor":products[-1].id if products else 0,
+               "sales_record":sales_record
+               }
+    
+    except Exception as e:
+        db.rollback()
         logger.exception("error occur")
         raise HTTPException(status_code=500, detail=str(e))

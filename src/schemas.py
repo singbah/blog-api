@@ -7,6 +7,13 @@ class CreatePost(BaseModel):
     excert:str=Form(...)
     content:str=Form(...)
 
+class CreateOrder(BaseModel):
+    product_name:str
+    money:float
+    product_id:int
+    quantity:int
+    vendor_id:int
+    
 class CreateUser(BaseModel):
     name:str
     phone:str

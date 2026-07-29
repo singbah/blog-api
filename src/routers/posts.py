@@ -8,7 +8,7 @@ from config import (get_user_agent, MAX_LENGTH, ALLOW_EXTENSTION, decode_token, 
 from config.utilities import upload_to_r2, delete_file_from_r2
 from src.routers.services.newsletter import send_newsletter
 
-posts_blue_print = APIRouter(prefix="/posts")
+posts_blue_print = APIRouter(prefix="/api/posts")
 
 # GET ALL POST/BLOGS
 @posts_blue_print.get("/posts")
