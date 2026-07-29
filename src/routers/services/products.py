@@ -10,7 +10,7 @@ import re
 from config import ALLOW_EXTENSTION, MAX_ATTEMPT, MAX_LENGTH, logger, decode_token
 from config.utilities import upload_to_r2
 
-products_bp = APIRouter(prefix="/api/products", tags=["Products BluePrint"])
+products_bp = APIRouter(prefix="/products", tags=["Products BluePrint"])
 
 @products_bp.get("/listings")
 async def get_listings(request:Request, cursor:int=Query(default=0), limit:int=Query(le=20, limit=100), db:session=Depends(get_db)):

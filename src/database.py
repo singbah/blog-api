@@ -43,8 +43,7 @@ class Mixin(DeclarativeBase):
         
         if not exclude:
             exclude = ['']
-            
-        exclude = set(exclude)
+        # exclude = set(exclude)
             
         result = {}
         
@@ -65,14 +64,15 @@ class Mixin(DeclarativeBase):
         return result
     
     def update(self, update_data:dict|None=None, exclude=['featured_image', 'id', 'created_at']):
-        for k, v in update_data.items():
-            if k in exclude:
-                print("can't change the value of ", k)
-                continue
-            att = getattr(self, k)
-            if not att:
-                continue
-            setattr(self, k, v)
+        if update_data:
+            for k, v in update_data.items():
+                if k in exclude:
+                    print("can't change the value of ", k)
+                    continue
+                att = getattr(self, k)
+                if not att:
+                    continue
+                setattr(self, k, v)
     
                     
         

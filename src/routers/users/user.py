@@ -4,15 +4,15 @@ from datetime import datetime, timedelta, timezone
 
 from src.database import get_db
 from src.models import NewsLetter, ContactMessage, Comments, Vendor, Products, Orders
-from config import get_user_agent, create_token, logger, decode_token, check_password, set_hash_password, MAX_ATTEMPT, ACCOUNT_LOCK_DELAY
+from config import get_user_agent, create_token, logger, decode_token,  MAX_ATTEMPT, ACCOUNT_LOCK_DELAY
 from src.schemas import CreateComment
 
-user_bp = APIRouter(prefix="/api/user")
+user_bp = APIRouter(prefix="/user")
 
 @user_bp.post("/create")
 async def create_user(request:Request, response:Response, user:dict, db:ses=Depends(get_db)):
     try:
-        ip_address = request.client.host
+        ip_address =  request.client.host if request.client else "No IP"
         user_agent_str = request.headers.get("user-agent")
         ua = get_user_agent(user_agent_str)
         email = user.get("email")
@@ -51,7 +51,7 @@ async def create_user(request:Request, response:Response, user:dict, db:ses=Depe
         new_user = NewsLetter(**user)
         db.add(new_user)
         db.commit()
-        db.flush(new_user)
+        db.refresh(new_user)
         
         logdata["email"] = new_user.email
         logdata["id"] = new_user.id
@@ -82,7 +82,7 @@ async def create_contact(request:Request, user:dict, db:ses=Depends(get_db)):
         
         newsletter = user.get("newsletter")
         ua = get_user_agent(request.headers.get("user-agent"))
-        ip_address = request.client.host
+        ip_address = request.client.host if request.client else "NO IP"
         now = datetime.now()
         email = user.get("email")
         
