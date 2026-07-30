@@ -1,10 +1,9 @@
 from fastapi import APIRouter, Request, Response, HTTPException, status, Depends, Query, UploadFile, File, Form
-from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session as session
 from src.models import Products, Vendor, Orders
 from src.database import get_db
-from datetime import datetime, timedelta
-from src.schemas import CreateOrder, CreateComment
+from datetime import datetime
+from src.schemas import CreateOrder
 from uuid import uuid4
 import re
 from config import ALLOW_EXTENSTION, MAX_ATTEMPT, MAX_LENGTH, logger, decode_token
@@ -101,10 +100,12 @@ async def upload_product(
        
         if photo.size and photo.size > MAX_LENGTH:
             raise HTTPException(status_code=status.HTTP_413_CONTENT_TOO_LARGE, detail="File too large")
+        
         if photo.content_type not in ALLOW_EXTENSTION:
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="File Content not allow")
         
         r2_file_upload = upload_to_r2(photo, 'posts')
+        
         file_url = r2_file_upload['url']
         file_key = r2_file_upload['key']
         

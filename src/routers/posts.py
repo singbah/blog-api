@@ -8,7 +8,7 @@ from config import (get_user_agent, MAX_LENGTH, ALLOW_EXTENSTION, decode_token, 
 from config.utilities import upload_to_r2, delete_file_from_r2
 from src.routers.services.newsletter import send_newsletter
 
-posts_blue_print = APIRouter(prefix="/api/posts")
+posts_blue_print = APIRouter(prefix="/posts")
 
 # GET ALL POST/BLOGS
 @posts_blue_print.get("/posts")
@@ -100,10 +100,10 @@ async def create_post(
                 detail="Image is too large."
             )
 
-        # file_result = upload_to_r2(photo, folder="posts")
+        file_result = upload_to_r2(photo, folder="posts")
 
-        # file_url = file_result["url"]
-        # file_key = file_result["key"]
+        file_url = file_result["url"]
+        file_key = file_result["key"]
         
         tag_objects = []
         for tag_name in {t.strip() for t in tags.split(",") if t.strip()}:
@@ -126,8 +126,8 @@ async def create_post(
             excert=excert,
             content=content,
             slug=slug,
-            featured_image='file_url',
-            file_key='file_key',
+            featured_image=file_url,
+            file_key=file_key,
             published_at=datetime.strptime(
                 published_at,
                 "%Y-%m-%d"
@@ -155,11 +155,11 @@ async def create_post(
     except HTTPException:
         db.rollback()
         logger.exception("Fail to post")
-        # if file_result:
-        #     try:
-        #         delete_file_from_r2(file_result["key"])
-        #     except Exception as e:
-        #         print(f"Failed to delete uploaded file: {e}")
+        if file_result:
+            try:
+                delete_file_from_r2(file_result["key"])
+            except Exception as e:
+                print(f"Failed to delete uploaded file: {e}")
         raise
 
     except Exception as e:
