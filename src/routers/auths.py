@@ -19,7 +19,18 @@ async def vendor_signup(user_data:CreateUser, db:ses=Depends(get_db)):
     try:
         hash_password = set_hash_password(user_data.password)
         
-        existing_user = db.query(Vendor).where(Vendor.phone==user_data.phone).first()
+        from sqlalchemy import or_
+
+        existing_user = (
+            db.query(Vendor)
+            .filter(
+                or_(
+                    Vendor.phone == user_data.phone,
+                    Vendor.email == user_data.email
+                )
+            )
+            .first()
+        )
         
         if existing_user:
             logger.warning(f"user already exist with phone {user_data.phone}")
