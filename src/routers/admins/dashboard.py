@@ -117,9 +117,9 @@ async def get_vendors_analytic(request: Request, db: Session = Depends(get_db)):
 
         # 2. Database Aggregations & Summary Counts
         total_sales = db.query(func.coalesce(func.sum(Orders.money), 0.0)).scalar()
-        active_products_count = db.query(Products).count()
+        active_products_count = db.query(Products).where(Products.is_active==True).count()
         registered_vendors_count = db.query(Vendor).count()
-        pending_reviews_count = db.query(Products).count()
+        pending_reviews_count = db.query(Products).filter(Products.status=="pendding").count()
         
 
         # 3. Data Slices for Admin Dashboard Tabs
