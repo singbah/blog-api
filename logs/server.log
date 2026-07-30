@@ -1062,3 +1062,23 @@ Traceback (most recent call last):
 fastapi.exceptions.HTTPException: 404: OTP not found
 2026-07-30 15:48:34,960 | INFO | vonder email@gmail.com logged in from 127.0.0.1
 2026-07-30 15:49:10,024 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-30 16:46:44,470 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-30 16:46:55,722 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-30 16:48:38,264 | ERROR | Fail to post
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/services/products.py", line 117, in upload_product
+    new_pd = Products(**new_product)
+  File "<string>", line 4, in __init__
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/sqlalchemy/orm/decl_base.py", line 2179, in _declarative_constructor
+    raise TypeError(
+        "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+    )
+TypeError: 'posts/1404a5cc01cd4e56a5fd7b3a33b9d139.png' is an invalid keyword argument for Products
