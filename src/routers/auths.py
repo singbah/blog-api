@@ -6,9 +6,9 @@ from sqlalchemy.orm import Session as ses
 
 from src.models import Vendor, OTP
 from src.database import get_db
-from config.emails import send_email
+# from config.emails import send_email
 
-from config import (get_user_agent, create_token, logger, decode_token, NOW, 
+from config import (create_token, logger, decode_token, NOW, 
                     MAX_ATTEMPT, ACCOUNT_LOCK_DELAY, check_password, set_hash_password)
 from src.schemas import UserLogin, CreateUser
 
