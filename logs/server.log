@@ -1013,3 +1013,52 @@ Traceback (most recent call last):
   File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
     raise HTTPException(status_code=401, detail="Auths require")
 fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-30 10:52:41,117 | WARNING | Token not found
+2026-07-30 10:52:41,124 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-30 10:52:41,133 | WARNING | Token not found
+2026-07-30 10:52:41,133 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/users/user.py", line 166, in get_user
+    raise HTTPException(status_code=401, detail="Auths require")
+fastapi.exceptions.HTTPException: 401: Auths require
+2026-07-30 10:53:24,012 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-30 12:34:50,790 | WARNING | Incorrect code
+2026-07-30 12:34:50,813 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 264, in confirm_opt_code
+    raise HTTPException(status_code=404, detail="OTP not found")
+fastapi.exceptions.HTTPException: 404: OTP not found
+2026-07-30 12:40:03,833 | WARNING | No token on refresh
+2026-07-30 12:46:27,937 | WARNING | No token on refresh
+2026-07-30 12:51:28,013 | WARNING | No token on refresh
+2026-07-30 12:56:28,015 | WARNING | No token on refresh
+2026-07-30 13:01:27,984 | WARNING | No token on refresh
+2026-07-30 13:06:27,911 | WARNING | No token on refresh
+2026-07-30 13:11:27,942 | WARNING | No token on refresh
+2026-07-30 13:16:27,923 | WARNING | No token on refresh
+2026-07-30 13:21:27,932 | WARNING | No token on refresh
+2026-07-30 13:26:28,305 | WARNING | No token on refresh
+2026-07-30 13:31:28,951 | WARNING | No token on refresh
+2026-07-30 13:36:30,894 | WARNING | No token on refresh
+2026-07-30 13:41:30,850 | WARNING | No token on refresh
+2026-07-30 13:46:30,860 | WARNING | No token on refresh
+2026-07-30 13:51:30,858 | WARNING | No token on refresh
+2026-07-30 13:56:30,871 | WARNING | No token on refresh
+2026-07-30 14:01:30,861 | WARNING | No token on refresh
+2026-07-30 14:06:30,856 | WARNING | No token on refresh
+2026-07-30 14:17:55,764 | WARNING | No token on refresh
+2026-07-30 14:21:32,295 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-30 15:33:19,839 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-30 15:33:29,174 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1
+2026-07-30 15:34:02,400 | WARNING | Incorrect code
+2026-07-30 15:34:02,401 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 264, in confirm_opt_code
+    raise HTTPException(status_code=404, detail="OTP not found")
+fastapi.exceptions.HTTPException: 404: OTP not found
+2026-07-30 15:48:34,960 | INFO | vonder email@gmail.com logged in from 127.0.0.1
+2026-07-30 15:49:10,024 | INFO | vonder singbahjohn@gmail.com logged in from 127.0.0.1

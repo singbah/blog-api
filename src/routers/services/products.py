@@ -104,13 +104,13 @@ async def upload_product(
         if photo.content_type not in ALLOW_EXTENSTION:
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="File Content not allow")
         
-        r2_file_upload = upload_to_r2(photo, 'posts')
+        # r2_file_upload = upload_to_r2(photo, 'posts')
         
-        file_url = r2_file_upload['url']
-        file_key = r2_file_upload['key']
+        # file_url = r2_file_upload['url']
+        # file_key = r2_file_upload['key']
         
         now = datetime.now()
-        new_product = {'product_name':product_name, 'featured_image':file_url, 'file_key':file_key, 'price':price, 'vendor_phone':vendor_phone, 'market':market, 'created_at':now, "vendor_id":vendor_id, 'category':category, 'slug':slug,
+        new_product = {'product_name':product_name, 'featured_image':'file_url', 'file_key':'file_key', 'price':price, 'vendor_phone':vendor_phone, 'market':market, 'created_at':now, "vendor_id":vendor_id, 'category':category, 'slug':slug,
         "details":details}
         
         
@@ -123,11 +123,11 @@ async def upload_product(
     except Exception as e:
         db.rollback()
         logger.exception("Fail to post")
-        if r2_file_upload:
-            try:
-                delete_file_from_r2(r2_file_upload["key"])
-            except Exception as delete_error:
-                print(f"Failed to delete uploaded file: {delete_error}")
+        # if r2_file_upload:
+        #     try:
+        #         delete_file_from_r2(r2_file_upload["key"])
+        #     except Exception as delete_error:
+        #         print(f"Failed to delete uploaded file: {delete_error}")
         raise HTTPException(
             status_code=500,
                 detail=str(e)
