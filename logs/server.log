@@ -1199,3 +1199,38 @@ Traceback (most recent call last):
 resend.exceptions.ResendError: Request failed: HTTPSConnectionPool(host='api.resend.com', port=443): Max retries exceeded with url: /emails (Caused by NameResolutionError("HTTPSConnection(host='api.resend.com', port=443): Failed to resolve 'api.resend.com' ([Errno -3] Temporary failure in name resolution)"))
 2026-07-30 23:24:39,037 | WARNING | No token on refresh
 2026-07-30 23:29:38,852 | WARNING | No token on refresh
+2026-07-30 23:37:09,453 | WARNING | No token on refresh
+2026-07-30 23:38:35,439 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in forgot_password
+    await send_email(recipients=[db_user.email], template_name="account_recovery.html", context={"otp":otp, "name":db_user.name}, subject="Account recovery")
+  File "/home/john-p-singbah/Documents/blog_api/config/emails.py", line 27, in send_email
+    resend.Emails.send({
+    ~~~~~~~~~~~~~~~~~~^^
+        "from": "Easi Tech Lr <support@easitech.email>",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        "html": html,
+        ^^^^^^^^^^^^^
+    })
+    ^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/resend/emails/_emails.py", line 286, in send
+    ).perform_with_content()
+      ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/resend/request.py", line 53, in perform_with_content
+    resp = self.perform()
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/resend/request.py", line 41, in perform
+    raise_for_code_and_type(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        code=data.get("statusCode") or 500,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        headers=self._response_headers,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/resend/exceptions.py", line 270, in raise_for_code_and_type
+    raise ResendError(
+    ...<5 lines>...
+    )
+resend.exceptions.ResendError: The easitech.email domain is not verified. Please, add and verify your domain on https://resend.com/domains

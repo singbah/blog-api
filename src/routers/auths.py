@@ -12,7 +12,7 @@ from config import (create_token, logger, decode_token, NOW,
                     MAX_ATTEMPT, ACCOUNT_LOCK_DELAY, check_password, set_hash_password)
 from src.schemas import UserLogin, CreateUser
 
-auths_bp = APIRouter(prefix="/api/auths")
+auths_bp = APIRouter(prefix="/auths")
 
 @auths_bp.post("/signup")
 async def vendor_signup(user_data:CreateUser, db:ses=Depends(get_db)):
