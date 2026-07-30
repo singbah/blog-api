@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session as ses
 
 from src.models import Vendor, OTP
 from src.database import get_db
-# from config.emails import send_email
+from config.emails import send_email
 
 from config import (create_token, logger, decode_token, NOW, 
                     MAX_ATTEMPT, ACCOUNT_LOCK_DELAY, check_password, set_hash_password)
@@ -230,15 +230,15 @@ async def forgot_password(email:str, request:Request, db:ses=Depends(get_db)):
         if not email:
             raise HTTPException(status_code=404, detail="You Didn't send email")
         
-        user = db.query(Vendor).where(Vendor.email == email).first()
+        db_user = db.query(Vendor).where(Vendor.email == email).first()
         ip_address = request.client.host if request.client else "None"
-        if not user:
+        if not db_user:
             logger.warning(f"User with IP {ip_address} Fail Account Recovery with email {email}")
             raise HTTPException(status_code=401, detail=f"This email {email} is not associated with any account here.")
         
         otp = uuid4().hex[0:6]
         
-        user = {"email":user.email, "name":user.name, "otp":otp}
+        user = {"email":db_user.email, "name":db_user.name, "otp":otp}
         now = datetime.now()
         new_opt = OTP(
             code=otp, email=email, created_at=now, expires_at=now + timedelta(minutes=5)
@@ -247,7 +247,7 @@ async def forgot_password(email:str, request:Request, db:ses=Depends(get_db)):
         db.commit()
         db.refresh(new_opt)
         
-        # await send_email(recipients=email, template_name="account_recovery.html", context={"otp":otp, "name":user.name}, subject="Account recovery")
+        await send_email(recipients=[db_user.email], template_name="account_recovery.html", context={"otp":otp, "name":db_user.name}, subject="Account recovery")
         
         return new_opt.to_dict()
     except Exception as e:

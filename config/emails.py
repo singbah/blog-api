@@ -22,7 +22,6 @@ async def send_email(
 ):
 
     template = env.get_template(template_name)
-
     html = template.render(**context)
 
     resend.Emails.send({
