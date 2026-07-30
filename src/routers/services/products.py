@@ -110,7 +110,7 @@ async def upload_product(
         file_key = r2_file_upload['key']
         
         now = datetime.now()
-        new_product = {'product_name':product_name, 'featured_image':'file_url', 'file_key':'file_key', 'price':price, 'vendor_phone':vendor_phone, 'market':market, 'created_at':now, "vendor_id":vendor_id, 'category':category, 'slug':slug,
+        new_product = {'product_name':product_name, 'featured_image':file_url, 'file_key':file_key, 'price':price, 'vendor_phone':vendor_phone, 'market':market, 'created_at':now, "vendor_id":vendor_id, 'category':category, 'slug':slug,
         "details":details}
         
         
