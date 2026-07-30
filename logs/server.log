@@ -1082,3 +1082,120 @@ Traceback (most recent call last):
         "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
     )
 TypeError: 'posts/1404a5cc01cd4e56a5fd7b3a33b9d139.png' is an invalid keyword argument for Products
+2026-07-30 23:20:11,661 | ERROR | error occur
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.resend.com', port=443): Failed to resolve 'api.resend.com' ([Errno -3] Temporary failure in name resolution)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/urllib3/util/retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.resend.com', port=443): Max retries exceeded with url: /emails (Caused by NameResolutionError("HTTPSConnection(host='api.resend.com', port=443): Failed to resolve 'api.resend.com' ([Errno -3] Temporary failure in name resolution)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/resend/http_client_requests.py", line 36, in request
+    resp = requests.request(
+        method=method,
+    ...<4 lines>...
+        timeout=self._timeout,
+    )
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/requests/api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.resend.com', port=443): Max retries exceeded with url: /emails (Caused by NameResolutionError("HTTPSConnection(host='api.resend.com', port=443): Failed to resolve 'api.resend.com' ([Errno -3] Temporary failure in name resolution)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/resend/request.py", line 102, in make_request
+    content, _status_code, resp_headers = sync_client.request(**kwargs)
+                                          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/resend/http_client_requests.py", line 48, in request
+    raise RuntimeError(f"Request failed: {e}") from e
+RuntimeError: Request failed: HTTPSConnectionPool(host='api.resend.com', port=443): Max retries exceeded with url: /emails (Caused by NameResolutionError("HTTPSConnection(host='api.resend.com', port=443): Failed to resolve 'api.resend.com' ([Errno -3] Temporary failure in name resolution)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/john-p-singbah/Documents/blog_api/src/routers/auths.py", line 249, in forgot_password
+    await send_email(recipients=[db_user.email], template_name="account_recovery.html", context={"otp":otp, "name":db_user.name}, subject="Account recovery")
+  File "/home/john-p-singbah/Documents/blog_api/config/emails.py", line 27, in send_email
+    resend.Emails.send({
+    ~~~~~~~~~~~~~~~~~~^^
+        "from": "Easi Tech Lr support@easitech.email",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        "html": html,
+        ^^^^^^^^^^^^^
+    })
+    ^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/resend/emails/_emails.py", line 286, in send
+    ).perform_with_content()
+      ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/resend/request.py", line 53, in perform_with_content
+    resp = self.perform()
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/resend/request.py", line 38, in perform
+    data = self.make_request(url=f"{resend.api_url}{self.path}")
+  File "/home/john-p-singbah/Documents/blog_api/.blog/lib/python3.14/site-packages/resend/request.py", line 106, in make_request
+    raise ResendError(
+    ...<4 lines>...
+    )
+resend.exceptions.ResendError: Request failed: HTTPSConnectionPool(host='api.resend.com', port=443): Max retries exceeded with url: /emails (Caused by NameResolutionError("HTTPSConnection(host='api.resend.com', port=443): Failed to resolve 'api.resend.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-30 23:24:39,037 | WARNING | No token on refresh
+2026-07-30 23:29:38,852 | WARNING | No token on refresh

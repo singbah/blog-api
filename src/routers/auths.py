@@ -12,7 +12,7 @@ from config import (create_token, logger, decode_token, NOW,
                     MAX_ATTEMPT, ACCOUNT_LOCK_DELAY, check_password, set_hash_password)
 from src.schemas import UserLogin, CreateUser
 
-auths_bp = APIRouter(prefix="/auths")
+auths_bp = APIRouter(prefix="/api/auths")
 
 @auths_bp.post("/signup")
 async def vendor_signup(user_data:CreateUser, db:ses=Depends(get_db)):
@@ -229,7 +229,7 @@ async def forgot_password(email:str, request:Request, db:ses=Depends(get_db)):
     try:
         if not email:
             raise HTTPException(status_code=404, detail="You Didn't send email")
-        
+        print(email)
         db_user = db.query(Vendor).where(Vendor.email == email).first()
         ip_address = request.client.host if request.client else "None"
         if not db_user:
@@ -238,7 +238,6 @@ async def forgot_password(email:str, request:Request, db:ses=Depends(get_db)):
         
         otp = uuid4().hex[0:6]
         
-        user = {"email":db_user.email, "name":db_user.name, "otp":otp}
         now = datetime.now()
         new_opt = OTP(
             code=otp, email=email, created_at=now, expires_at=now + timedelta(minutes=5)
@@ -249,7 +248,7 @@ async def forgot_password(email:str, request:Request, db:ses=Depends(get_db)):
         
         await send_email(recipients=[db_user.email], template_name="account_recovery.html", context={"otp":otp, "name":db_user.name}, subject="Account recovery")
         
-        return new_opt.to_dict()
+        return {'detail':"Successfull"}
     except Exception as e:
         db.rollback()
         logger.exception("error occur")
