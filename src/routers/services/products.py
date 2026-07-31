@@ -1,5 +1,7 @@
 from fastapi import APIRouter, Request, Response, HTTPException, status, Depends, Query, UploadFile, File, Form
 from sqlalchemy.orm import Session as session
+
+from fastapi.responses import HTMLResponse
 from src.models import Products, Vendor, Orders
 from src.database import get_db
 from datetime import datetime
@@ -71,6 +73,59 @@ async def send_order(product_info:CreateOrder, request:Request, db:session=Depen
         logger.exception("error occur")
         logger.exception("error occur")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@products_bp.get("/share/{product_slug}", response_class=HTMLResponse)
+async def share_product(product_slug: str, db: session = Depends(get_db)):
+    # 1. Fetch the product from database
+    product = db.query(Products).filter(Products.slug == product_slug).first()
+    
+    if not product:
+        # Fallback redirect if product is missing
+        frontend_fallback = "https://www.easitechlr.com/market"
+        return HTMLResponse(content=f'<script>window.location.href="{frontend_fallback}";</script>')
+
+    # 2. Define the React frontend URL where the buyer actually views the product
+    frontend_url = f"https://www.easitechlr.com/product/{product.slug}"
+    
+    # Clean image URL if necessary
+    image_url = product.featured_image or ""
+    
+    # 3. HTML response serving meta tags to WhatsApp/Social media, then immediately redirecting
+    html_content = f"""<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{product.product_name} | Easi Tech Lr</title>
+        
+        <!-- Open Graph Meta Tags for WhatsApp & Social Media Previews -->
+        <meta property="og:type" content="product" />
+        <meta property="og:title" content="{product.product_name}" />
+        <meta property="og:description" content="Price: ${product.price} - Order directly via WhatsApp on Easi Tech Lr." />
+        <meta property="og:image" content="{image_url}" />
+        <meta property="og:image:secure_url" content="{image_url}" />
+        <meta property="og:url" content="{frontend_url}" />
+        
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="{product.product_name}" />
+        <meta name="twitter:description" content="Price: ${product.price}" />
+        <meta name="twitter:image" content="{image_url}" />
+
+        <!-- Instant Redirect for Humans -->
+        <script>
+            window.location.href = "{frontend_url}";
+        </script>
+        <meta http-equiv="refresh" content="0;url={frontend_url}">
+    </head>
+    <body style="font-family: sans-serif; text-align: center; padding-top: 50px;">
+        <p>Redirecting to <strong>{product.product_name}</strong>...</p>
+        <a href="{frontend_url}">Click here if you are not redirected automatically</a>
+    </body>
+    </html>
+    """
+    return HTMLResponse(content=html_content)
 
 @products_bp.post("/upload")
 async def upload_product(
